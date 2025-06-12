@@ -65,8 +65,23 @@ export default {
 </script>
 
 <style>
+
+
+@font-face {
+  font-family: 'Lato';
+  src: url('@/assets/styles/fonts/lato/Lato-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('@/assets/styles/fonts/lato/Lato-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Lato', sans-serif !important;
   font-weight: 600;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -74,12 +89,14 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-  <style>
+
+
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
       font-weight: 600;
+       font-family: 'Lato', sans-serif !important;
     }
 
     body {
