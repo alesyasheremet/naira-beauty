@@ -36,8 +36,8 @@
       <v-container class="background-container" id="naira-services">
         <v-row>
           <v-col cols="12" class="text-center">
-            <h1>Welcome to Naira Services</h1>
-            <p>Explore our offerings and get in touch with us.</p>
+         
+            <p>Mijn naam is Naira en mijn beauty salon is gespecialiseerd in wimpers, nagels en wenkbrauwen. Ik heb ruim 10 jaar ervaring in de beauty branche. Met veel liefde en passie zorg ik ervoor dat elke klant tevreden de deur uit gaat. *ook heb ik de benodigde opleidingen behaald en cursussen afgerond.</p>
           </v-col>
         </v-row>
       </v-container>
@@ -113,10 +113,7 @@ export default {
   color: white; /* Change text color to contrast with the background */
 }
 
-p {
-  font-size: 1.2rem;
-  color: white; /* Change text color to contrast with the background */
-}
+
 
 /* Add padding to the main container to ensure the content doesn't overlap with the edges */
 .background-container {
@@ -130,10 +127,15 @@ padding-top: 100px;
 
 .app-toolbar{
   opacity: 70%;
+  color: black !important;
 }
 
 /* Custom Vuetify Button color */
 v-btn {
   color: #1976D2;  /* Customize button color */
+}
+
+.text-center{
+  color: black !important;
 }
   </style>
