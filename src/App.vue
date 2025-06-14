@@ -8,12 +8,12 @@
 
     <!-- Page Content -->
     <v-main>
-<AboutMe v-if="aboutVisible"/>
-     <AlleBehandelingen v-if="behandelingenVisible"/>
+
+       <router-view />
     </v-main>
-    
+  
   </v-app>
-<router-view />
+
 </template>
 <script lang="ts">
 

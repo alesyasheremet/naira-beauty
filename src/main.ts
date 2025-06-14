@@ -20,15 +20,15 @@ const routes = [
   },
   {
     path: '/behandelingen',
-    component: App,
+    component: AlleBehandeligen,
   },
   {
     path: '/about',
-    component: App,
+    component: AboutMe,
   },
   {
     path: '/contact',
-    component: App,
+    component: ContactDetails,
   },
 ]
 
