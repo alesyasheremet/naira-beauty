@@ -11,9 +11,9 @@
 
       <!-- Desktop Navigation Links -->
       <v-spacer />
-      <v-btn text href="#about" v-if="!isMobile">About</v-btn>
-      <v-btn text href="#naira-services" v-if="!isMobile">Naira Services</v-btn>
-      <v-btn text href="#contact" v-if="!isMobile">Contact</v-btn>
+      <v-btn text  v-if="!isMobile"><router-link :to="'/about'">About</router-link></v-btn>
+      <v-btn text  v-if="!isMobile"><router-link :to="'/behandelingen'">Behandelingen</router-link></v-btn>
+      <v-btn text  v-if="!isMobile"><router-link :to="'/contact'">Contact</router-link></v-btn>
     </v-app-bar>
 
     <!-- Navigation Drawer for Mobile -->
@@ -23,7 +23,7 @@
           <v-list-item-title>About</v-list-item-title>
         </v-list-item>
         <v-list-item link href="#naira-services">
-          <v-list-item-title>Naira Services</v-list-item-title>
+          <v-list-item-title>Behandelingen</v-list-item-title>
         </v-list-item>
         <v-list-item link href="#contact">
           <v-list-item-title>Contact</v-list-item-title>
@@ -34,18 +34,16 @@
     <!-- Page Content -->
     <v-main>
       <v-container class="background-container" id="naira-services">
-        <v-row>
-          <v-col cols="12" class="text-center">
-         
-            <p>Mijn naam is Naira en mijn beauty salon is gespecialiseerd in wimpers, nagels en wenkbrauwen. Ik heb ruim 10 jaar ervaring in de beauty branche. Met veel liefde en passie zorg ik ervoor dat elke klant tevreden de deur uit gaat. *ook heb ik de benodigde opleidingen behaald en cursussen afgerond.</p>
-          </v-col>
-        </v-row>
+       
       </v-container>
+     <router-view />
     </v-main>
+    
   </v-app>
+
 </template>
-<script>
-//import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+
 import { ref, computed } from 'vue';
 
 export default {
@@ -54,6 +52,7 @@ export default {
 
   },
   setup() {
+    console.log('App.vue setup running')
     const drawer = ref(false);
 
     // Responsive Check: Check if the screen is mobile
@@ -67,19 +66,6 @@ export default {
 <style>
 
 
-@font-face {
-  font-family: 'Lato';
-  src: url('@/assets/styles/fonts/lato/Lato-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Lato';
-  src: url('@/assets/styles/fonts/lato/Lato-Bold.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
 #app {
   font-family: 'Lato', sans-serif !important;
   font-weight: 600;
