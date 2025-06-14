@@ -11,9 +11,9 @@
 
       <!-- Desktop Navigation Links -->
       <v-spacer />
-      <v-btn text  v-if="!isMobile"><router-link :to="'/about'">About</router-link></v-btn>
-      <v-btn text  v-if="!isMobile"><router-link :to="'/behandelingen'">Behandelingen</router-link></v-btn>
-      <v-btn text  v-if="!isMobile"><router-link :to="'/contact'">Contact</router-link></v-btn>
+      <v-btn text  v-if="!isMobile" :to="'/about'" router>About</v-btn>
+      <v-btn text  v-if="!isMobile" :to="'/behandelingen'" router>Behandelingen</v-btn>
+      <v-btn text  v-if="!isMobile" :to="'/contact'" router>Contact</v-btn>
     </v-app-bar>
 
     <!-- Navigation Drawer for Mobile -->
@@ -33,9 +33,7 @@
 
     <!-- Page Content -->
     <v-main>
-      <v-container class="background-container" id="naira-services">
-       
-      </v-container>
+
      <router-view />
     </v-main>
     
