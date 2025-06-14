@@ -1,71 +1,71 @@
 
 <template>
-<v-app class="app-class">
+<v-app app class="app-class">
     <!-- App Bar (Top Menu) -->
-    <v-app-bar app class="app-toolbar">
-      <!-- Hamburger Menu for Mobile -->
-      <v-app-bar-nav-icon @click="drawer = !drawer" v-if="isMobile"></v-app-bar-nav-icon>
+    <ToolBar @on-toolbar-item-changed="showMainPage"/>
 
-      <!-- Title of the App -->
-      <v-toolbar-title>Naira Beauty</v-toolbar-title>
-
-      <!-- Desktop Navigation Links -->
-      <v-spacer />
-      <v-btn text  v-if="!isMobile" :to="'/about'" router>About</v-btn>
-      <v-btn text  v-if="!isMobile" :to="'/behandelingen'" router>Behandelingen</v-btn>
-      <v-btn text  v-if="!isMobile" :to="'/contact'" router>Contact</v-btn>
-    </v-app-bar>
-
-    <!-- Navigation Drawer for Mobile -->
-    <v-navigation-drawer v-model="drawer" temporary>
-      <v-list>
-        <v-list-item link :to="'/about'" router>
-          <v-list-item-title>About</v-list-item-title>
-        </v-list-item>
-        <v-list-item link :to="'/behandelingen'" router>
-          <v-list-item-title>Behandelingen</v-list-item-title>
-        </v-list-item>
-        <v-list-item link :to="'/contact'" router>
-          <v-list-item-title>Contact</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+    
 
     <!-- Page Content -->
     <v-main>
-
-     <router-view />
+<AboutMe v-if="aboutVisible"/>
+     <AlleBehandelingen v-if="behandelingenVisible"/>
     </v-main>
     
   </v-app>
-
+<router-view />
 </template>
 <script lang="ts">
 
 import { ref, computed } from 'vue';
+import ToolBar from '@/components/ToolBar.vue'
+import AboutMe from '@/components/About.vue'
+import AlleBehandelingen from '@/components/AlleBehandelingen.vue'
 
 export default {
   name: 'App',
-  components: {
+  components: { ToolBar, AboutMe, AlleBehandelingen,
 
   },
   setup() {
     console.log('App.vue setup running')
     const drawer = ref(false);
-
+    const aboutVisible = ref(false)
+    const behandelingenVisible = ref(false)
+    const contactVisible = ref(false)
     // Responsive Check: Check if the screen is mobile
     const isMobile = computed(() => window.innerWidth < 600);
 
-    return { drawer, isMobile };
+    const showMainPage = (textarg: string) => {
+      if (textarg == 'about'){
+        aboutVisible.value = true;
+        behandelingenVisible.value = false;
+        contactVisible.value = false;
+      }
+
+      if (textarg == 'behandelingen'){
+        aboutVisible.value = false;
+        behandelingenVisible.value = true;
+        contactVisible.value = false;
+      }
+
+            if (textarg == 'contact'){
+        aboutVisible.value = false;
+        behandelingenVisible.value = false;
+        contactVisible.value = true;
+      }
+
+    }
+    return { drawer, isMobile, showMainPage, aboutVisible, behandelingenVisible };
   }
 }
 </script>
 
-<style>
+<style lang="scss">
 
 
 #app {
-  font-family: 'Lato', sans-serif !important;
+  font-family: 'Domine', sans-serif !important;
   font-weight: 600;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -80,7 +80,7 @@ export default {
       padding: 0;
       height: 100%;
       font-weight: 600;
-       font-family: 'Lato', sans-serif !important;
+       font-family: 'Domine', sans-serif !important;
     }
 
     body {

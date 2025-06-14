@@ -12,3 +12,18 @@
   font-weight: bold;
   font-style: normal;
 }
+
+
+@font-face {
+  font-family: 'Domine';
+  src: url('@/assets/styles/fonts/domine/Domine-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Domine';
+  src: url('@/assets/styles/fonts/domine/Domine-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}

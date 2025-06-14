@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import {createVuetify} from 'vuetify'
-import App from './App.vue'
+import App from '@/App.vue'
 import 'vuetify/styles';  // Global CSS for Vuetify    
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
@@ -10,6 +10,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import AlleBehandeligen from '@/components/AlleBehandelingen.vue'
 import AboutMe from '@/components/About.vue'
 import ContactDetails from '@/components/Contact.vue'
+import { aliases, fa } from 'vuetify/iconsets/fa'
+import '@fortawesome/fontawesome-free/css/all.css'
 
 const routes = [
   {
@@ -18,15 +20,15 @@ const routes = [
   },
   {
     path: '/behandelingen',
-    component: AlleBehandeligen,
+    component: App,
   },
   {
     path: '/about',
-    component: AboutMe,
+    component: App,
   },
   {
     path: '/contact',
-    component: ContactDetails,
+    component: App,
   },
 ]
 
@@ -58,9 +60,16 @@ const vuetify = createVuetify({
       defaults: {
         global: {
           style: {
-            fontFamily: 'Lato, sans-serif', // Set Lato as the default font
+            fontFamily: 'Domine, sans-serif', // Set Lato as the default font
           }
         }
+      },
+      icons: {
+        defaultSet: 'fa',
+        aliases,
+        sets: {
+          fa,
+        },
       },
     });
 
