@@ -13,6 +13,10 @@ import ContactDetails from '@/components/Contact.vue'
 
 const routes = [
   {
+    path: '/',
+    component: App,
+  },
+  {
     path: '/behandelingen',
     component: AlleBehandeligen,
   },
