@@ -19,13 +19,13 @@
     <!-- Navigation Drawer for Mobile -->
     <v-navigation-drawer v-model="drawer" temporary>
       <v-list>
-        <v-list-item link href="#about">
+        <v-list-item link :to="'/about'" router>
           <v-list-item-title>About</v-list-item-title>
         </v-list-item>
-        <v-list-item link href="#naira-services">
+        <v-list-item link :to="'/behandelingen'" router>
           <v-list-item-title>Behandelingen</v-list-item-title>
         </v-list-item>
-        <v-list-item link href="#contact">
+        <v-list-item link :to="'/contact'" router>
           <v-list-item-title>Contact</v-list-item-title>
         </v-list-item>
       </v-list>
