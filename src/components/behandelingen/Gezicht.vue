@@ -71,12 +71,12 @@
       outlined
           flat
     >
-      <div class="text-left">
-        <h3 class="text-h6 mb-1">Treatment Name</h3>
-        <p class="text-body-2">Short description</p>
+      <div class="text-left" style="font-size: 14px; font-weight: 400;">
+        <div>Treatment Name</div>
+        <div>Short description</div>
       </div>
 
-      <v-icon size="18">
+      <v-icon size="16">
         fa-solid fa-chevron-up
       </v-icon>
 
@@ -89,12 +89,12 @@
       outlined
           flat
     >
-      <div class="text-left">
+      <div class="text-left" style="font-size: 14px; font-weight: 400;">
         <div>Treatment Name</div>
         <div>Short description</div>
       </div>
 
-      <v-icon size="18">
+      <v-icon size="16">
         fa-solid fa-chevron-up
       </v-icon>
 
