@@ -51,10 +51,10 @@
                 {{ treatment.showDescription ? 'Verberg beschrijving' : 'Toon beschrijving' }}
               </v-btn>
               </div>
-                      <v-btn color="primary" @click="selectTreatment(treatment)">
+                      <v-btn color="primary" v-if="treatment.treatments && treatment.treatments.length == 0" @click="selectTreatment(treatment)">
                 Kies
               </v-btn>
-<v-icon size="16">
+<v-icon size="16" v-if="treatment.treatments && treatment.treatments.length > 0">
         fa-solid fa-chevron-up
       </v-icon>
          
@@ -67,40 +67,23 @@
          
 <v-expand-transition v-if="expanded">
   <div>
-        <v-card
+        <v-card  v-for="tr in treatment.treatments"
+          :key="tr.title"
+          style="text-align: left;"
       class="pa-4 mb-2 d-flex justify-space-between align-center"
-      @click=""
-      style="cursor: pointer;"
+
       outlined
           flat
     >
       <div class="text-left" style="font-size: 14px; font-weight: 400;">
-        <div>Treatment Name</div>
-        <div>Short description</div>
+        <div>{{ tr.title }}</div>
+        <div>{{ tr.duration}}</div>
+
       </div>
 
-      <v-icon size="16">
-        fa-solid fa-chevron-up
-      </v-icon>
-
-
-    </v-card>
-            <v-card
-      class="pa-4 mb-2 d-flex justify-space-between align-center"
-      @click=""
-      style="cursor: pointer;"
-      outlined
-          flat
-    >
-      <div class="text-left" style="font-size: 14px; font-weight: 400;">
-        <div>Treatment Name</div>
-        <div>Short description</div>
-      </div>
-
-      <v-icon size="16">
-        fa-solid fa-chevron-up
-      </v-icon>
-
+     <v-btn color="primary"  @click="selectTreatment(tr)">
+                Kies
+              </v-btn>
 
     </v-card>
     </div>
@@ -124,17 +107,39 @@ export default defineComponent({
 
   },
   setup() {
-    const categories = ['Alles', 'Gellak', 'BIAB', 'Verwijderen']
+    const categories = ['Alles', 'Gezicht', 'Nagels', 'Ontharen', 'Verwijderen']
     const treatments = ref([
   {
-    title: 'Nagelversteviging - BIAB',
-    duration: '1 u 15 min',
-    description: 'Verstevig je natuurlijke nagels met BIAB voor een gezonde en langdurige look.',
-    price: 65,
-    fromPrice: true,
-    showDescription: false,
-    category: 'Gellak',
-  },
+  category: "Nagels",
+  subcategory: "Manicure & Pedicure",
+  title: "Manicure Russian",
+  duration: "25 min",
+  price: 25,
+  treatments: []
+  
+},
+  {
+  category: "Nagels",
+  subcategory: "Manicure & Pedicure",
+  title: "paraffine wax +gouden masker 24k+hand scrub +olie massage",
+  duration: "45 min",
+  price: 60,
+  treatments: []
+  
+},
+  {
+  category: "Nagels",
+  subcategory: "Kunstnagels",
+  title: "Nagelversteviging - BIAB - Opvullen",
+  duration: "",
+  price: 60,
+  treatments: [{
+    title: "Enkel opvullen Twee weken",
+    duration: "1 u",
+    price:55,
+  }]
+  
+},
   {
     title: 'Nagelversteviging - BIAB - Verwijderen',
     duration: '30 min',
@@ -177,7 +182,7 @@ const filteredTreatments = computed(() =>
 )
 
 const expanded = ref(false)
-const expandCard = () => {
+const expandCard = (title: string) => {
 expanded.value = !expanded.value;
 }
 
