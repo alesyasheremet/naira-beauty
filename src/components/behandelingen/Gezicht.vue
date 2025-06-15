@@ -9,6 +9,7 @@
             :key="subcategory"
             :active="activeSubCategory === subcategory"
             @click="activeSubCategory = subcategory"
+            class="text-left"
             >
             <v-list-item-title>{{ subcategory }}</v-list-item-title>
           </v-list-item>
@@ -52,7 +53,7 @@
               </v-btn>
 </div>
               </div>
-                      <v-btn color="primary" v-if="treatment.treatments && treatment.treatments.length == 0" @click="selectTreatment(treatment)">
+                      <v-btn color="primary" v-if="treatment.treatments && treatment.treatments.length == 0" @click="selectTreatment(treatment, undefined)">
                 Kies
               </v-btn>
 <v-icon size="16" v-if="treatment.treatments && treatment.treatments.length > 0" @click="expandCard(index)">
@@ -82,7 +83,7 @@
 
       </div>
 
-     <v-btn color="primary"  @click="selectTreatment(tr)">
+     <v-btn color="primary"  @click="selectTreatment(treatment, tr)">
                 Kies
               </v-btn>
 
@@ -100,20 +101,10 @@
 
 <script lang="ts">
 import { ref, defineComponent, computed, ComputedRef, watch } from 'vue'
-type Treatment = {
-  category: string,
-  subcategory: string,
-  title: string,
-  duration: string,
-  price: number,
-  treatments: SubTreatment[],
-};
+import {SubTreatment, type Treatment} from '../types'
 
-type SubTreatment = {
-    title: string,
-  duration: string,
-  price: number,
-}
+import { useBehandelingStore } from '@/components/behandelingen/behandelingen-store'
+
 
 
 export default defineComponent({
@@ -125,6 +116,7 @@ export default defineComponent({
 category: String,
   },
   setup(props) {
+    const behandelingenStore = useBehandelingStore()
     const categories = ['Alle', 'Gezicht', 'Nagels', 'Ontharen', 'Verwijderen']
     const treatments = ref<Treatment[]>([
   {
@@ -244,8 +236,23 @@ console.log(activeCategory.value)
 
 const activeSubCategory = ref('Kunstnagels')
 
-const selectTreatment = (text: any) => {
-console.log(text)
+const selectTreatment = (treatment: Treatment, subTreatment?: SubTreatment) => {
+  const selectedTreatment = { category: treatment.category,
+    subcategory: treatment.subcategory,
+    duration: treatment.duration,
+    price: treatment.price,
+    title: treatment.title,
+    treatments: [{
+
+    }]
+
+  } as Treatment
+
+  if (subTreatment != undefined){
+    selectedTreatment.treatments.push(subTreatment)
+  }
+
+behandelingenStore.increment(selectedTreatment)
 }
 
 watch(() => props.category, (newVal) => {

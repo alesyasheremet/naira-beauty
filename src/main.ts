@@ -14,6 +14,8 @@ import { aliases, fa } from 'vuetify/iconsets/fa'
 import '@fortawesome/fontawesome-free/css/all.css'
 import KiesTijd from './components/KiesTijd.vue';
 import AfspraakBevestigen from './components/AfspraakBevestigen.vue';
+import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 const routes = [
   {
@@ -85,6 +87,9 @@ const vuetify = createVuetify({
     });
 
 const app = createApp(App)
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
+app.use(pinia)
 app.use(vuetify)
 app.use(router)
 app.mount('#app')

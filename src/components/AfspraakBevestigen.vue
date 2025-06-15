@@ -32,7 +32,7 @@
           <h3 class="text-h6 mb-2">Your Booking</h3>
           <v-divider class="mb-4" />
 
-          <v-list density="compact">
+          <v-list density="compact" v-for="behandeling in behandelingen">
             <v-list-item>
               <v-list-item-title><strong>Date:</strong></v-list-item-title>
               <v-list-item-subtitle>{{ selectedDate || 'Not selected' }}</v-list-item-subtitle>
@@ -43,7 +43,7 @@
             </v-list-item>
             <v-list-item>
               <v-list-item-title><strong>Treatment:</strong></v-list-item-title>
-              <v-list-item-subtitle>Relaxing Massage</v-list-item-subtitle>
+              <v-list-item-subtitle>{{behandeling.title}}</v-list-item-subtitle>
             </v-list-item>
           </v-list>
 
@@ -57,11 +57,7 @@
 import { ref, computed } from 'vue'
 import { useDisplay } from 'vuetify'
 import GezichtBehandeling from '@/components/behandelingen/Gezicht.vue'
-import NagelsBehandeling from '@/components/behandelingen/Nagels.vue'
-import WimpersBehandeling from '@/components/behandelingen/Wimpers.vue'
-import nailsIcon from '@/assets/images/nails.png';
-import facialIcon from '@/assets/images/facial.png';
-import waxingIcon from '@/assets/images/waxing.png';
+import { useBehandelingStore } from '@/components/behandelingen/behandelingen-store'
 
 export default {
   name: 'AfspraakBevestigen',
@@ -72,6 +68,8 @@ export default {
   setup() {
     const selectedDate = ref(null)
 const selectedTime = ref(null)
+    const behandelingenStore = useBehandelingStore()
+    const behandelingen = ref(behandelingenStore.$state.treatment)
     const form = ref({
   name: '',
   surname: '',
@@ -101,7 +99,7 @@ const goNext = () => {
 }
 
 return{
-selectedTime, selectedDate, goNext, availableTimes, form, submitForm,
+selectedTime, selectedDate, goNext, availableTimes, form, submitForm, behandelingen,
 }
   }
 }

@@ -72,7 +72,7 @@
     >
       <div class="bar-content">
         <div>
-          
+          {{ behandelingen > 0 ? behandelingen + ' services' : '' }}
         </div>
          <div class="right-action" @click="selectTimeAndDate">
           Kies tijd
@@ -83,7 +83,7 @@
 </template>
 
 <script lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import GezichtBehandeling from '@/components/behandelingen/Gezicht.vue'
 import NagelsBehandeling from '@/components/behandelingen/Nagels.vue'
@@ -92,6 +92,7 @@ import nailsIcon from '@/assets/images/nails.png';
 import facialIcon from '@/assets/images/facial.png';
 import waxingIcon from '@/assets/images/waxing.png';
 import { useRoute, useRouter } from 'vue-router'
+import { useBehandelingStore } from '@/components/behandelingen/behandelingen-store'
 
 export default {
   name: 'AlleBehandelingen',
@@ -108,12 +109,17 @@ const router = useRouter()
 const route = useRoute()
 const tabs = ['Tab 1', 'Tab 2', 'Tab 3']
 const activeTab = ref(tabs[0])
+const behandelingenStore = useBehandelingStore()
+const behandelingen = ref(behandelingenStore.$state.treatment.length);
 
 const tabComponents = {
   'Tab 1': GezichtBehandeling,
   'Tab 2': NagelsBehandeling,
   'Tab 3': WimpersBehandeling,
 }
+watch (()=> behandelingenStore.$state.treatment.length, (newVal) => {
+  behandelingen.value = newVal
+})
 const selectedSlot = ref('')
 // Optional: Activate slot from hash on page load
 onMounted(() => {
@@ -142,7 +148,7 @@ router.push('/behandelingen/kies-tijd')
 return{
   isMobile,
   drawer,
-  tabs, activeTab, tabComponents, nailsIcon, facialIcon, waxingIcon, selectTimeAndDate, selectedSlot, selectSlot
+  tabs, activeTab, tabComponents, nailsIcon, facialIcon, waxingIcon, selectTimeAndDate, selectedSlot, selectSlot, behandelingen,
 }
   }
 }
