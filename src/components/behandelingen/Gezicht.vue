@@ -11,7 +11,7 @@
             @click="activeSubCategory = subcategory"
             class="text-left"
             >
-            <v-list-item-title>{{ subcategory }}</v-list-item-title>
+            <v-list-item-title>{{ subcategory }}({{getSubCategoryCount(subcategory) }})</v-list-item-title>
           </v-list-item>
         </v-list>
         
@@ -292,9 +292,12 @@ const isCardExpanded = (index: number) => {
   return expandedArr.value.includes(index);
 }
 
+const getSubCategoryCount = (subcategory: string) => {
+return treatments.value.filter(t => t.subcategory.toLowerCase() === subcategory.toLowerCase())?.length;
+}
 
 return {treatments, selectTreatment, categories, activeCategory, activeSubCategory, filteredTreatments
-  , expandCard, expanded, expandedArr, isCardExpanded, filteredCategoryTreatments}
+  , expandCard, expanded, expandedArr, isCardExpanded, filteredCategoryTreatments, getSubCategoryCount}
   }
 })
 </script>
