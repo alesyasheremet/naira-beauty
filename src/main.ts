@@ -12,6 +12,7 @@ import AboutMe from '@/components/About.vue'
 import ContactDetails from '@/components/Contact.vue'
 import { aliases, fa } from 'vuetify/iconsets/fa'
 import '@fortawesome/fontawesome-free/css/all.css'
+import KiesTijd from './components/KiesTijd.vue';
 
 const routes = [
   {
@@ -22,6 +23,10 @@ const routes = [
   {
     path: '/behandelingen',
     component: AlleBehandeligen,
+  },
+  {
+    path: '/behandelingen/kies-tijd',
+    component: KiesTijd,
   },
   {
     path: '/about',
