@@ -89,7 +89,7 @@ const submitForm = async() => {
 
   const resp = axios.get('/.netlify/functions/api?name=John');
   //await sendEmail()
- // console.log(resp)
+  console.log(resp)
   router.push('/')
 
   // Add logic to send the message
