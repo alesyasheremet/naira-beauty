@@ -26,6 +26,7 @@
           outlined
           flat
           style="text-align: left;"
+          @click="expandCard"
           
         >
            <v-row align="start" class="pa-4">
@@ -62,7 +63,7 @@
               </v-btn>
             </v-col>
           </v-row>
-<v-expand-transition>
+<v-expand-transition v-if="expanded">
   <div>
         <v-card
       class="pa-4 mb-2 d-flex justify-space-between align-center"
@@ -173,7 +174,12 @@ const filteredTreatments = computed(() =>
     : treatments.value.filter(t => t.category === activeCategory.value)
 )
 
-return {treatments, selectTreatment, categories, activeCategory, filteredTreatments}
+const expanded = ref(false)
+const expandCard = () => {
+expanded.value = !expanded.value;
+}
+
+return {treatments, selectTreatment, categories, activeCategory, filteredTreatments, expandCard, expanded}
   }
 })
 </script>
