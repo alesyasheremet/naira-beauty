@@ -1,85 +1,76 @@
 <template>
+  <v-container fluid class="pa-6">
+    <v-row>
+      <!-- Left: Calendar & Time Slots -->
+      <v-col cols="12" md="8">
+        <h2 class="text-h5 mb-4">Choose Date & Time</h2>
 
-  <v-container class="py-10">
-    <div class="card-row">
-    <v-row justify="center" align="start" no-gutters >
+        <!-- Date Picker -->
+        <v-date-picker
+          v-model="selectedDate"
+          show-adjacent-months
+          color="primary"
+          elevation="1"
+        />
 
-      <v-col cols="12" sm="2">
-        <v-card class="pa-2" rounded="2xl" elevation="4" max-width="200">
-          <v-container class="text-center fill-height d-flex flex-column justify-center align-center">
-          <v-icon size="40" icon="fa fa-grip-vertical"  class="mb-3"
-/>
-          <v-card-title>Alle</v-card-title>
-          </v-container>
-        </v-card>
+        <!-- Time Slots -->
+        <h3 class="text-subtitle-1 mt-6 mb-2">Available Time Slots</h3>
+        <v-row dense>
+          <v-col
+            v-for="time in availableTimes"
+            :key="time"
+            cols="6"
+            sm="4"
+            md="3"
+          >
+            <v-card
+              class="pa-3 text-center"
+              :color="selectedTime === time ? 'primary' : 'grey-lighten-3'"
+              :text="selectedTime === time ? 'white' : 'black'"
+              elevation="1"
+              @click=""
+              style="cursor: pointer;"
+            >
+              {{ time }}
+            </v-card>
+          </v-col>
+        </v-row>
       </v-col>
 
-      <v-col cols="12" sm="2">
-        <v-card class="pa-2" rounded="2xl" elevation="4" max-width="200">
-           <v-container class="text-center fill-height d-flex flex-column justify-center align-center">
-        <v-img
-  :src="facialIcon"
-  width="64"
-  height="64"
-  class="mb-3"
-/>
-          <v-card-title>Gezicht</v-card-title>
-          </v-container>
-        </v-card>
-      </v-col>
+      <!-- Right: Summary Card -->
+      <v-col cols="12" md="4">
+        <v-card class="pa-4" elevation="2">
+          <h3 class="text-h6 mb-2">Your Booking</h3>
+          <v-divider class="mb-4" />
 
-      <v-col cols="12" sm="2">
-        <v-card class="pa-2" rounded="2xl" elevation="4"  max-width="200">
-          <v-container class="text-center fill-height d-flex flex-column justify-center align-center">
-          <v-img
-  :src="nailsIcon"
-  width="64"
-  height="64"
-  class="mb-3"
-/>
-          <v-card-title>Nagels</v-card-title>
-          </v-container>
-        </v-card>
-      </v-col>
+          <v-list density="compact">
+            <v-list-item>
+              <v-list-item-title><strong>Date:</strong></v-list-item-title>
+              <v-list-item-subtitle>{{ selectedDate || 'Not selected' }}</v-list-item-subtitle>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title><strong>Time:</strong></v-list-item-title>
+              <v-list-item-subtitle>{{ selectedTime || 'Not selected' }}</v-list-item-subtitle>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title><strong>Treatment:</strong></v-list-item-title>
+              <v-list-item-subtitle>Relaxing Massage</v-list-item-subtitle>
+            </v-list-item>
+          </v-list>
 
-      <v-col cols="12" sm="2">
-        <v-card class="pa-2" rounded="2xl" elevation="4" max-width="200">
-           <v-container class="text-center fill-height d-flex flex-column justify-center align-center">
-          <v-img
-  :src="waxingIcon"
-  width="64"
-  height="64"
-  class="mb-3"
-/>
-          <v-card-title>Ontharen</v-card-title>
-          </v-container>
+          <v-btn
+            block
+            color="primary"
+            class="mt-6"
+            :disabled="!selectedTime || !selectedDate"
+            @click="goNext"
+          >
+            Continue
+          </v-btn>
         </v-card>
       </v-col>
     </v-row>
-    </div>
   </v-container>
-      <GezichtBehandeling />
-  <v-layout>
-    <!-- Page content here -->
-
-    <!-- Full-width sticky bottom bar -->
-    <v-sheet
-      class="schedule-bar"
-      height="64"
-      elevation="3"
-      rounded="0"
-      width="100%"
-    >
-      <div class="bar-content">
-        <div>
-          Nagelversteviging  45 min $60
-        </div>
-         <div class="right-action" @click="">
-          Kies tijd
-         </div>
-      </div>
-    </v-sheet>
-  </v-layout>
 </template>
 
 <script lang="ts">
@@ -99,25 +90,27 @@ export default {
   },
   
   setup() {
-    const drawer = ref(true)
+    const selectedDate = ref(null)
+const selectedTime = ref(null)
 
-const { mobile } = useDisplay()
-const isMobile = computed(() => mobile.value)
+const availableTimes = [
+  '09:00', '09:30', '10:00', '10:30',
+  '11:00', '11:30', '12:00', '13:00',
+  '14:00', '14:30', '15:00', '15:30',
+  '16:00', '16:30', '17:00',
+]
 
-
-const tabs = ['Tab 1', 'Tab 2', 'Tab 3']
-const activeTab = ref(tabs[0])
-
-const tabComponents = {
-  'Tab 1': GezichtBehandeling,
-  'Tab 2': NagelsBehandeling,
-  'Tab 3': WimpersBehandeling,
+const goNext = () => {
+  console.log('Proceed with:', {
+    date: selectedDate.value,
+    time: selectedTime.value,
+    treatment: 'Relaxing Massage',
+  })
+  // Add navigation logic here (e.g., router.push('/confirm'))
 }
 
 return{
-  isMobile,
-  drawer,
-  tabs, activeTab, tabComponents, nailsIcon, facialIcon, waxingIcon,
+selectedTime, selectedDate, goNext, availableTimes,
 }
   }
 }

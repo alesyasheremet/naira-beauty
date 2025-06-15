@@ -74,7 +74,7 @@
         <div>
           Nagelversteviging  45 min $60
         </div>
-         <div class="right-action" @click="">
+         <div class="right-action" @click="selectTimeAndDate">
           Kies tijd
          </div>
       </div>
@@ -91,6 +91,7 @@ import WimpersBehandeling from '@/components/behandelingen/Wimpers.vue'
 import nailsIcon from '@/assets/images/nails.png';
 import facialIcon from '@/assets/images/facial.png';
 import waxingIcon from '@/assets/images/waxing.png';
+import { useRouter } from 'vue-router'
 
 export default {
   name: 'AlleBehandelingen',
@@ -103,7 +104,7 @@ export default {
 
 const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
-
+const router = useRouter()
 
 const tabs = ['Tab 1', 'Tab 2', 'Tab 3']
 const activeTab = ref(tabs[0])
@@ -114,10 +115,13 @@ const tabComponents = {
   'Tab 3': WimpersBehandeling,
 }
 
+const selectTimeAndDate = () => {
+router.push('/behandelingen/kies-tijd')
+}
 return{
   isMobile,
   drawer,
-  tabs, activeTab, tabComponents, nailsIcon, facialIcon, waxingIcon,
+  tabs, activeTab, tabComponents, nailsIcon, facialIcon, waxingIcon, selectTimeAndDate,
 }
   }
 }
