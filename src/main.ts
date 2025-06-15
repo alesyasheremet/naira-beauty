@@ -16,7 +16,8 @@ import '@fortawesome/fontawesome-free/css/all.css'
 const routes = [
   {
     path: '/',
-    component: App,
+   // component: App,
+    redirect: '/behandelingen',
   },
   {
     path: '/behandelingen',
