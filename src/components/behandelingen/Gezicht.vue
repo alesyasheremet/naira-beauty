@@ -2,7 +2,7 @@
   <v-container>
     <!-- TABS ON THE LEFT -->
     <v-row>
-      <v-col cols="12" md="3">
+      <v-col cols="12" md="4">
         <v-list nav>
           <v-list-item
             v-for="category in categories"
@@ -17,7 +17,7 @@
       </v-col>
 
       <!-- TREATMENTS RIGHT -->
-      <v-col cols="12" md="9">
+      <v-col cols="12" md="8">
          <div class="card-table">
         <v-card
           v-for="treatment in filteredTreatments"

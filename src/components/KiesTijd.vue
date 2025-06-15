@@ -3,8 +3,6 @@
     <v-row>
       <!-- Left: Calendar & Time Slots -->
       <v-col cols="12" md="8">
-        <h2 class="text-h5 mb-4">Choose Date & Time</h2>
-
         <!-- Date Picker -->
         <v-date-picker
           v-model="selectedDate"
@@ -14,7 +12,6 @@
         />
 
         <!-- Time Slots -->
-        <h3 class="text-subtitle-1 mt-6 mb-2">Available Time Slots</h3>
         <v-row dense>
           <v-col
             v-for="time in availableTimes"
@@ -26,7 +23,6 @@
             <v-card
               class="pa-3 text-center"
               :color="selectedTime === time ? 'primary' : 'grey-lighten-3'"
-              :text="selectedTime === time ? 'white' : 'black'"
               elevation="1"
               @click=""
               style="cursor: pointer;"
