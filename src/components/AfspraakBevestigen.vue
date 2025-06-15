@@ -58,6 +58,7 @@ import { ref, computed } from 'vue'
 import { useDisplay } from 'vuetify'
 import GezichtBehandeling from '@/components/behandelingen/Gezicht.vue'
 import { useBehandelingStore } from '@/components/behandelingen/behandelingen-store'
+import { useRouter } from 'vue-router'
 
 export default {
   name: 'AfspraakBevestigen',
@@ -70,6 +71,7 @@ export default {
 const selectedTime = ref(null)
     const behandelingenStore = useBehandelingStore()
     const behandelingen = ref(behandelingenStore.$state.treatment)
+    const router = useRouter()
     const form = ref({
   name: '',
   surname: '',
@@ -80,6 +82,9 @@ const selectedTime = ref(null)
 
 const submitForm = () => {
   console.log('Form submitted:', form.value)
+  behandelingenStore.$reset()
+  router.push('/')
+
   // Add logic to send the message
 }
 const availableTimes = [
