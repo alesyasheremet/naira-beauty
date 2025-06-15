@@ -54,7 +54,7 @@
 </div>
               </div>
                       <v-btn color="primary" v-if="treatment.treatments && treatment.treatments.length == 0" @click="selectTreatment(treatment, undefined)">
-                Kies
+                {{isTreatmentSelected(treatment.title) ? 'Gekozen' : 'Kies'}}
               </v-btn>
 <v-icon size="16" v-if="treatment.treatments && treatment.treatments.length > 0" @click="expandCard(index)">
         {{isCardExpanded(index) ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'}}
@@ -292,12 +292,17 @@ const isCardExpanded = (index: number) => {
   return expandedArr.value.includes(index);
 }
 
+
+const isTreatmentSelected = (title: string) => {
+  return behandelingenStore.$state.treatment.filter(t => t.title == title)?.length > 0
+}
+
 const getSubCategoryCount = (subcategory: string) => {
 return treatments.value.filter(t => t.subcategory.toLowerCase() === subcategory.toLowerCase())?.length;
 }
 
 return {treatments, selectTreatment, categories, activeCategory, activeSubCategory, filteredTreatments
-  , expandCard, expanded, expandedArr, isCardExpanded, filteredCategoryTreatments, getSubCategoryCount}
+  , expandCard, expanded, expandedArr, isCardExpanded, filteredCategoryTreatments, getSubCategoryCount, isTreatmentSelected}
   }
 })
 </script>

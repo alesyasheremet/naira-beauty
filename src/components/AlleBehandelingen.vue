@@ -196,7 +196,6 @@ return{
 .right-action {
   flex: 0 0 40%;
   background-color: #F2B8C6; /* Vuetify primary */
-  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
