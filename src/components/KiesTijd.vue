@@ -64,7 +64,7 @@
             :disabled="!selectedDate"
             @click="goNext"
           >
-            Continue
+            Afspraak bevestigen
           </v-btn>
         </v-card>
       </v-col>
@@ -195,7 +195,7 @@ selectedTime, selectedDate, goNext, availableTimes,
 
 /* Card text */
 .v-card-text {
-  font-size: 1rem;
+  
   color: #555;
   line-height: 1.5;
 }

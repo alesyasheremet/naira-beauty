@@ -47,15 +47,6 @@
             </v-list-item>
           </v-list>
 
-          <v-btn
-            block
-            color="primary"
-            class="mt-6"
-            :disabled="!selectedTime || !selectedDate"
-            @click="goNext"
-          >
-            Continue
-          </v-btn>
         </v-card>
       </v-col>
     </v-row>
