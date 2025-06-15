@@ -34,7 +34,7 @@ const routes = [
     component: AfspraakBevestigen,
   },
   {
-    path: '/about',
+    path: '/team',
     component: AboutMe,
   },
   {

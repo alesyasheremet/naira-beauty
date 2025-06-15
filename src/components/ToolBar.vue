@@ -8,15 +8,15 @@
 
       <!-- Desktop Navigation Links -->
       <v-spacer />
-      <v-btn text  v-if="!isMobile" @click="toolBarItemChanged('about')">About</v-btn>
+      <v-btn text  v-if="!isMobile" @click="toolBarItemChanged('team')">Team</v-btn>
       <v-btn text  v-if="!isMobile" @click="toolBarItemChanged('behandelingen')">Behandelingen</v-btn>
       <v-btn text  v-if="!isMobile" @click="toolBarItemChanged('contact')">Contact</v-btn>
     </v-app-bar>
     <!-- Navigation Drawer for Mobile -->
     <v-navigation-drawer v-model="drawer" temporary>
       <v-list>
-        <v-list-item link :to="'/about'" router>
-          <v-list-item-title>About</v-list-item-title>
+        <v-list-item link :to="'/team'" router>
+          <v-list-item-title>Team</v-list-item-title>
         </v-list-item>
         <v-list-item link :to="'/behandelingen'" router>
           <v-list-item-title>Behandelingen</v-list-item-title>
