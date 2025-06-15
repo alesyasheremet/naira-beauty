@@ -256,8 +256,8 @@ behandelingenStore.increment(selectedTreatment)
 }
 
 watch(() => props.category, (newVal) => {
-  console.log(newVal)
   activeCategory.value = newVal;
+  activeSubCategory.value = treatments.value.filter(tr => tr.category.toLowerCase() == newVal?.toLowerCase())[0]?.subcategory;
 })
 
 const filteredTreatments : ComputedRef<Treatment[]> = computed(() => {

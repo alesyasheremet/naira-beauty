@@ -28,6 +28,20 @@
         </v-card>
       </v-col>
 
+            <v-col cols="12" sm="2">
+        <v-card class="pa-2" rounded="2xl" elevation="4" max-width="200" @click="selectSlot('wimpers')" :class="{ 'active-card': selectedSlot === 'wimpers' }">
+           <v-container class="text-center fill-height d-flex flex-column justify-center align-center">
+        <v-img
+  :src="wimpersIcon"
+  width="96"
+  height="96"
+  class="mb-3"
+/>
+          <v-card-title>Wimpers</v-card-title>
+          </v-container>
+        </v-card>
+      </v-col>
+
       <v-col cols="12" sm="2">
         <v-card class="pa-2" rounded="2xl" elevation="4"  max-width="200" @click="selectSlot('nagels')" :class="{ 'active-card': selectedSlot === 'nagels' }">
           <v-container class="text-center fill-height d-flex flex-column justify-center align-center">
@@ -91,6 +105,7 @@ import WimpersBehandeling from '@/components/behandelingen/Wimpers.vue'
 import nailsIcon from '@/assets/images/nails.png';
 import facialIcon from '@/assets/images/facial.png';
 import waxingIcon from '@/assets/images/waxing.png';
+import wimpersIcon from '@/assets/images/wimpers.png';
 import { useRoute, useRouter } from 'vue-router'
 import { useBehandelingStore } from '@/components/behandelingen/behandelingen-store'
 
@@ -148,7 +163,7 @@ router.push('/behandelingen/kies-tijd')
 return{
   isMobile,
   drawer,
-  tabs, activeTab, tabComponents, nailsIcon, facialIcon, waxingIcon, selectTimeAndDate, selectedSlot, selectSlot, behandelingen,
+  tabs, activeTab, tabComponents, nailsIcon, facialIcon, waxingIcon, selectTimeAndDate, selectedSlot, selectSlot, behandelingen, wimpersIcon,
 }
   }
 }
