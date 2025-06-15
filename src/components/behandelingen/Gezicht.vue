@@ -22,16 +22,17 @@
         <v-card
           v-for="treatment in filteredTreatments"
           :key="treatment.title"
-          class="mb-4 px-4 py-3"
+          class=""
           outlined
           flat
+          style="text-align: left;"
           
         >
-           <v-row align="start" >
+           <v-row align="start" class="pa-4">
             <!-- LEFT: INFO -->
-            <v-col cols="12" md="12">
-              <div class="text-subtitle-1 font-weight-medium">{{ treatment.title }}</div>
-              <div class="text-body-2 text-grey-darken-1">
+            <v-col cols="12" md="12" style="font-size: 14px; font-weight: 400;" >
+              <div >{{ treatment.title }}</div>
+              <div >
                 {{ treatment.duration }} •
                 {{ treatment.fromPrice ? `vanaf €${treatment.price}` : `€${treatment.price}` }}
               </div>
