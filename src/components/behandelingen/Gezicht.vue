@@ -41,7 +41,7 @@
               <div >
                 {{ treatment.duration }} 
                 {{ treatment.fromPrice ? `vanaf €${treatment.price}` : `€${treatment.price}` }}
-              </div>
+              
                    <v-btn
                 variant="text"
                 size="small"
@@ -50,6 +50,7 @@
               >
                 {{ treatment.showDescription ? 'Verberg beschrijving' : 'Toon beschrijving' }}
               </v-btn>
+</div>
               </div>
                       <v-btn color="primary" v-if="treatment.treatments && treatment.treatments.length == 0" @click="selectTreatment(treatment)">
                 Kies

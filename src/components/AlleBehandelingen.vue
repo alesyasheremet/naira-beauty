@@ -72,7 +72,7 @@
     >
       <div class="bar-content">
         <div>
-          Nagelversteviging  45 min $60
+          
         </div>
          <div class="right-action" @click="selectTimeAndDate">
           Kies tijd
