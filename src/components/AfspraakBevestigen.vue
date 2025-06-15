@@ -87,7 +87,7 @@ const submitForm = async() => {
   console.log('Form submitted:', form.value)
   behandelingenStore.$reset()
 
-  const resp = axios.get('/.netlify/functions/api?name=John');
+  const resp = await axios.get('/.netlify/functions/api?name=John');
   //await sendEmail()
   console.log(resp)
   router.push('/')

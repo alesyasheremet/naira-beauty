@@ -4,7 +4,3 @@ declare module '*.vue' {
   export default component
 }
 
-declare module '@/assets/smtp/smtp.js' {
-  const content: any;
-  export default content;
-}
