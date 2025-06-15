@@ -27,43 +27,7 @@
           flat
           
         >
-<v-expand-transition>
-  <div>
-        <v-card
-      class="pa-4 mb-2 d-flex justify-space-between align-center"
-      @click=""
-      style="cursor: pointer;"
-    >
-      <div class="text-left">
-        <h3 class="text-h6 mb-1">Treatment Name</h3>
-        <p class="text-body-2">Short description</p>
-      </div>
-
-      <v-icon>
-        fa-solid fa-chevron-up
-      </v-icon>
-
-
-    </v-card>
-            <v-card
-      class="pa-4 mb-2 d-flex justify-space-between align-center"
-      @click=""
-      style="cursor: pointer;"
-    >
-      <div class="text-left">
-        <div>Treatment Name</div>
-        <div>Short description</div>
-      </div>
-
-      <v-icon>
-        fa-solid fa-chevron-up
-      </v-icon>
-
-
-    </v-card>
-    </div>
-    </v-expand-transition>
-          <v-row align="start" >
+           <v-row align="start" >
             <!-- LEFT: INFO -->
             <v-col cols="12" md="12">
               <div class="text-subtitle-1 font-weight-medium">{{ treatment.title }}</div>
@@ -97,6 +61,47 @@
               </v-btn>
             </v-col>
           </v-row>
+<v-expand-transition>
+  <div>
+        <v-card
+      class="pa-4 mb-2 d-flex justify-space-between align-center"
+      @click=""
+      style="cursor: pointer;"
+      outlined
+          flat
+    >
+      <div class="text-left">
+        <h3 class="text-h6 mb-1">Treatment Name</h3>
+        <p class="text-body-2">Short description</p>
+      </div>
+
+      <v-icon size="18">
+        fa-solid fa-chevron-up
+      </v-icon>
+
+
+    </v-card>
+            <v-card
+      class="pa-4 mb-2 d-flex justify-space-between align-center"
+      @click=""
+      style="cursor: pointer;"
+      outlined
+          flat
+    >
+      <div class="text-left">
+        <div>Treatment Name</div>
+        <div>Short description</div>
+      </div>
+
+      <v-icon size="18">
+        fa-solid fa-chevron-up
+      </v-icon>
+
+
+    </v-card>
+    </div>
+    </v-expand-transition>
+       
         </v-card>
        
       </v-col>
