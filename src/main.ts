@@ -13,6 +13,7 @@ import ContactDetails from '@/components/Contact.vue'
 import { aliases, fa } from 'vuetify/iconsets/fa'
 import '@fortawesome/fontawesome-free/css/all.css'
 import KiesTijd from './components/KiesTijd.vue';
+import AfspraakBevestigen from './components/AfspraakBevestigen.vue';
 
 const routes = [
   {
@@ -27,6 +28,10 @@ const routes = [
   {
     path: '/behandelingen/kies-tijd',
     component: KiesTijd,
+  },
+    {
+    path: '/behandelingen/kies-tijd/afspraak-bevestigen',
+    component: AfspraakBevestigen,
   },
   {
     path: '/about',

@@ -1,40 +1,29 @@
 <template>
   <v-container fluid class="pa-6">
     <v-row>
-      <!-- Left: Calendar & Time Slots -->
-      <v-col cols="12" md="8">
-        <h2 class="text-h5 mb-4">Choose Date & Time</h2>
-
-        <!-- Date Picker -->
-        <v-date-picker
-          v-model="selectedDate"
-          show-adjacent-months
-          color="primary"
-          elevation="1"
-        />
-
-        <!-- Time Slots -->
-        <h3 class="text-subtitle-1 mt-6 mb-2">Available Time Slots</h3>
-        <v-row dense>
-          <v-col
-            v-for="time in availableTimes"
-            :key="time"
-            cols="6"
-            sm="4"
-            md="3"
-          >
-            <v-card
-              class="pa-3 text-center"
-              :color="selectedTime === time ? 'primary' : 'grey-lighten-3'"
-              :text="selectedTime === time ? 'white' : 'black'"
-              elevation="1"
-              @click=""
-              style="cursor: pointer;"
-            >
-              {{ time }}
-            </v-card>
-          </v-col>
-        </v-row>
+       <v-col cols="12" md="8">
+       <v-form @submit.prevent="submitForm">
+          <v-row dense>
+            <v-col cols="12" md="6">
+              <v-text-field label="Name" v-model="form.name" required />
+            </v-col>
+            <v-col cols="12" md="6">
+              <v-text-field label="Surname" v-model="form.surname" required />
+            </v-col>
+            <v-col cols="12" md="6">
+              <v-text-field label="Email" v-model="form.email" type="email" required />
+            </v-col>
+            <v-col cols="12" md="6">
+              <v-text-field label="Phone" v-model="form.phone" type="tel" />
+            </v-col>
+            <v-col cols="12">
+              <v-textarea label="Message" v-model="form.message" rows="4" required />
+            </v-col>
+            <v-col cols="12">
+              <v-btn color="primary" type="submit">Submit</v-btn>
+            </v-col>
+          </v-row>
+        </v-form>
       </v-col>
 
       <!-- Right: Summary Card -->
@@ -59,9 +48,10 @@
           </v-list>
 
           <v-btn
-           
+            block
+            color="primary"
             class="mt-6"
-            :disabled="!selectedDate"
+            :disabled="!selectedTime || !selectedDate"
             @click="goNext"
           >
             Continue
@@ -81,10 +71,9 @@ import WimpersBehandeling from '@/components/behandelingen/Wimpers.vue'
 import nailsIcon from '@/assets/images/nails.png';
 import facialIcon from '@/assets/images/facial.png';
 import waxingIcon from '@/assets/images/waxing.png';
-import { routerKey, useRouter } from 'vue-router'
 
 export default {
-  name: 'KiesTijd',
+  name: 'AfspraakBevestigen',
   components: {GezichtBehandeling
 
   },
@@ -92,8 +81,18 @@ export default {
   setup() {
     const selectedDate = ref(null)
 const selectedTime = ref(null)
-const router = useRouter()
+    const form = ref({
+  name: '',
+  surname: '',
+  email: '',
+  phone: '',
+  message: '',
+})
 
+const submitForm = () => {
+  console.log('Form submitted:', form.value)
+  // Add logic to send the message
+}
 const availableTimes = [
   '09:00', '09:30', '10:00', '10:30',
   '11:00', '11:30', '12:00', '13:00',
@@ -107,12 +106,11 @@ const goNext = () => {
     time: selectedTime.value,
     treatment: 'Relaxing Massage',
   })
-  router.push('/behandelingen/kies-tijd/afspraak-bevestigen')
   // Add navigation logic here (e.g., router.push('/confirm'))
 }
 
 return{
-selectedTime, selectedDate, goNext, availableTimes,
+selectedTime, selectedDate, goNext, availableTimes, form, submitForm,
 }
   }
 }
