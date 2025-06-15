@@ -20,13 +20,13 @@
       <v-col cols="12" md="8">
        
         <v-card
-          v-for="treatment in filteredTreatments"
+          v-for="(treatment, index) in filteredTreatments"
           :key="treatment.title"
           class=""
           outlined
           flat
           style="text-align: left;"
-          @click="expandCard"
+         
           
         >
           
@@ -55,8 +55,8 @@
                       <v-btn color="primary" v-if="treatment.treatments && treatment.treatments.length == 0" @click="selectTreatment(treatment)">
                 Kies
               </v-btn>
-<v-icon size="16" v-if="treatment.treatments && treatment.treatments.length > 0">
-        fa-solid fa-chevron-up
+<v-icon size="16" v-if="treatment.treatments && treatment.treatments.length > 0" @click="expandCard(index)">
+        {{isCardExpanded(index) ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'}}
       </v-icon>
          
         
@@ -66,7 +66,7 @@
               </v-card>
             
          
-<v-expand-transition v-if="expanded">
+<v-expand-transition v-if="isCardExpanded(index)">
   <div>
         <v-card  v-for="tr in treatment.treatments"
           :key="tr.title"
@@ -183,11 +183,25 @@ const filteredTreatments = computed(() =>
 )
 
 const expanded = ref(false)
-const expandCard = (title: string) => {
-expanded.value = !expanded.value;
+const expandedArr = ref<number[]>([]);
+
+const expandCard = (index: number) => {
+  if (!expandedArr.value.includes(index)) {
+    expandedArr.value.push(index);
+  }
+  else{
+    expandedArr.value = expandedArr.value.filter(item => item !== index);
+  }
 }
 
-return {treatments, selectTreatment, categories, activeCategory, filteredTreatments, expandCard, expanded}
+const isCardExpanded = (index: number) => {
+  return expandedArr.value.includes(index);
+}
+
+
+
+
+return {treatments, selectTreatment, categories, activeCategory, filteredTreatments, expandCard, expanded, expandedArr, isCardExpanded}
   }
 })
 </script>
