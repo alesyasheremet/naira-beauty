@@ -103,7 +103,7 @@ import NagelsBehandeling from '@/components/behandelingen/Nagels.vue'
 import WimpersBehandeling from '@/components/behandelingen/Wimpers.vue'
 import nailsIcon from '@/assets/images/nails.png';
 import facialIcon from '@/assets/images/facial.png';
-import waxingIcon from '@/assets/images/waxing.png';
+import waxingIcon from '@/assets/images/hair-removal.png';
 import wimpersIcon from '@/assets/images/eyelash.png';
 import { useRoute, useRouter } from 'vue-router'
 import { useBehandelingStore } from '@/components/behandelingen/behandelingen-store'
