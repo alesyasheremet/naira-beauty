@@ -9,20 +9,23 @@
             :key="category"
             :active="activeCategory === category"
             @click="activeCategory = category"
-            rounded
-          >
+            >
             <v-list-item-title>{{ category }}</v-list-item-title>
           </v-list-item>
         </v-list>
+        
       </v-col>
 
       <!-- TREATMENTS RIGHT -->
       <v-col cols="12" md="9">
+         <div class="card-table">
         <v-card
           v-for="treatment in filteredTreatments"
           :key="treatment.title"
           class="mb-4 px-4 py-3"
-          variant="outlined"
+          outlined
+          flat
+          
         >
           <v-row align="center" justify="space-between">
             <!-- LEFT: INFO -->
@@ -48,6 +51,7 @@
               >
                 {{ treatment.showDescription ? 'Verberg beschrijving' : 'Toon beschrijving' }}
               </v-btn>
+        
             </v-col>
 
             <!-- RIGHT: "Kies" -->
@@ -58,6 +62,7 @@
             </v-col>
           </v-row>
         </v-card>
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -116,8 +121,8 @@ export default defineComponent({
 
 const activeCategory = ref('Alles')
 
-const selectedTreatment = () => {
-console.log('test')
+const selectTreatment = (text: any) => {
+console.log(text)
 }
 
 const filteredTreatments = computed(() =>
@@ -126,8 +131,30 @@ const filteredTreatments = computed(() =>
     : treatments.value.filter(t => t.category === activeCategory.value)
 )
 
-return {treatments, selectedTreatment, categories, activeCategory, filteredTreatments}
+return {treatments, selectTreatment, categories, activeCategory, filteredTreatments}
   }
 })
 </script>
 
+<style>
+.card-table {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.card-row {
+  margin: 0 !important;
+  border-bottom: 1px solid #eee;
+  border-radius: 0 !important;
+  width: 100%;
+  box-shadow: none !important;
+}
+
+.card-row:last-child {
+  border-bottom: none;
+}
+</style>
