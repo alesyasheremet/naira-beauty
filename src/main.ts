@@ -46,7 +46,7 @@ const vuetify = createVuetify({
         themes: {
           light: {
             colors:{
-            primary: '#1976D2', // Your custom color
+            primary: '#F2B8C6', // Your custom color
             secondary: '#424242', // Your custom color
             accent: '#82B1FF', // Your custom color
             error: '#FF5252', // Your custom color

@@ -116,7 +116,7 @@ padding-top: 100px;
 
 /* Custom Vuetify Button color */
 v-btn {
-  color: #1976D2;  /* Customize button color */
+ // color: #1976D2;  /* Customize button color */
 }
 
 .text-center{

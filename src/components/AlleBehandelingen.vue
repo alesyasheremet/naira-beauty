@@ -129,7 +129,6 @@ return{
   bottom: 0;
   background-color: white;
   z-index: 10;
-  padding: 0 16px;
 }
 
 .bar-content {
@@ -137,13 +136,13 @@ return{
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  max-width: 1280px; /* Optional for content limit */
   margin: 0 auto;
+  width: 100%;
 }
 
 .right-action {
   flex: 0 0 40%;
-  background-color: #1976d2; /* Vuetify primary */
+  background-color: #F2B8C6; /* Vuetify primary */
   color: white;
   display: flex;
   justify-content: center;
