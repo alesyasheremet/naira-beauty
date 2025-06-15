@@ -29,23 +29,20 @@
           @click="expandCard"
           
         >
-           <v-row align="start" class="pa-4">
+          
             <!-- LEFT: INFO -->
-            <v-col cols="12" md="12" style="font-size: 14px; font-weight: 400;" >
+           
+              <v-card
+      class="pa-4 mb-2 d-flex justify-space-between align-center"
+      flat
+      outlined>
+      <div class="text-left" style="font-size: 14px; font-weight: 400;">
               <div >{{ treatment.title }}</div>
               <div >
-                {{ treatment.duration }} •
+                {{ treatment.duration }} 
                 {{ treatment.fromPrice ? `vanaf €${treatment.price}` : `€${treatment.price}` }}
               </div>
-
-              <!-- Optional Description Toggle -->
-              <v-expand-transition>
-                <div v-if="treatment.showDescription" class="text-body-2 text-grey-darken-2 mt-2">
-                  {{ treatment.description }}
-                </div>
-              </v-expand-transition>
-
-              <v-btn
+                   <v-btn
                 variant="text"
                 size="small"
                 class="mt-1"
@@ -53,16 +50,21 @@
               >
                 {{ treatment.showDescription ? 'Verberg beschrijving' : 'Toon beschrijving' }}
               </v-btn>
-        
-            </v-col>
-
-            <!-- RIGHT: "Kies" -->
-            <v-col cols="12" md="3" class="text-md-right text-left">
-              <v-btn color="primary" @click="selectTreatment(treatment)">
+              </div>
+                      <v-btn color="primary" @click="selectTreatment(treatment)">
                 Kies
               </v-btn>
-            </v-col>
-          </v-row>
+<v-icon size="16">
+        fa-solid fa-chevron-up
+      </v-icon>
+         
+        
+          
+      
+            
+              </v-card>
+            
+         
 <v-expand-transition v-if="expanded">
   <div>
         <v-card
