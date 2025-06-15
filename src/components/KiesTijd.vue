@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="pa-6">
+  <v-container class="pa-0">
     <v-row>
       <!-- Left: Calendar & Time Slots -->
       <v-col cols="12" md="8">

@@ -1,7 +1,7 @@
 <template>
-  <v-container>
+ 
     <!-- TABS ON THE LEFT -->
-    <v-row>
+    <v-row align="start" class="pa-4">
       <v-col cols="12" md="4">
         <v-list nav>
           <v-list-item
@@ -65,7 +65,7 @@
         </div>
       </v-col>
     </v-row>
-  </v-container>
+ 
 
 </template>
 

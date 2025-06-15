@@ -1,8 +1,8 @@
 <template>
 
-  <v-container class="py-10">
+
     <div class="card-row">
-    <v-row justify="center" align="start" no-gutters >
+    <v-row justify="start" align="start" no-gutters >
 
       <v-col cols="12" sm="2">
         <v-card class="pa-2" rounded="2xl" elevation="4" max-width="200" >
@@ -44,7 +44,7 @@
 
       <v-col cols="12" sm="2">
         <v-card class="pa-2" rounded="2xl" elevation="4" max-width="200">
-           <v-container class="text-center fill-height d-flex flex-column justify-center align-center">
+           <v-container class="text-center fill-height d-flex flex-column  align-center">
           <v-img
   :src="waxingIcon"
   width="64"
@@ -57,7 +57,7 @@
       </v-col>
     </v-row>
     </div>
-  </v-container>
+
       <GezichtBehandeling />
   <v-layout>
     <!-- Page content here -->

@@ -7,7 +7,7 @@
     
 
     <!-- Page Content -->
-    <v-main>
+    <v-main class="main-class">
 
        <router-view />
     </v-main>
@@ -121,5 +121,9 @@ v-btn {
 
 .text-center{
   color: black !important;
+}
+
+.main-class{
+  padding: 0 !important
 }
   </style>
