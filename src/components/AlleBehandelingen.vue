@@ -59,7 +59,27 @@
     </div>
   </v-container>
       <GezichtBehandeling />
+  <v-layout>
+    <!-- Page content here -->
 
+    <!-- Full-width sticky bottom bar -->
+    <v-sheet
+      class="schedule-bar"
+      height="64"
+      elevation="3"
+      rounded="0"
+      width="100%"
+    >
+      <div class="bar-content">
+        <div>
+          <strong>Nagelversteviging</strong> • 45 min • <strong>$60</strong>
+        </div>
+         <div class="right-action" @click="">
+          Kies tijd
+         </div>
+      </div>
+    </v-sheet>
+  </v-layout>
 </template>
 
 <script lang="ts">
@@ -104,6 +124,37 @@ return{
 </script>
 
 <style lang="scss" scoped>
+.schedule-bar {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  z-index: 10;
+  padding: 0 16px;
+}
+
+.bar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  max-width: 1280px; /* Optional for content limit */
+  margin: 0 auto;
+}
+
+.right-action {
+  flex: 0 0 40%;
+  background-color: #1976d2; /* Vuetify primary */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+  height: 100%;
+}
+
 /* Left menu */
 .v-list {
   border-right: 1px solid #ddd;
