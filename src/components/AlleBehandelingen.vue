@@ -43,7 +43,7 @@
       </v-col>
 
       <v-col cols="12" sm="2">
-        <v-card class="pa-2" rounded="2xl" elevation="4" max-width="200" @click="selectSlot('waxing')" :class="{ 'active-card': selectedSlot === 'waxing' }">
+        <v-card class="pa-2" rounded="2xl" elevation="4" max-width="200" @click="selectSlot('ontharen')" :class="{ 'active-card': selectedSlot === 'ontharen' }">
            <v-container class="text-center fill-height d-flex flex-column justify-center align-center" >
           <v-img
   :src="waxingIcon"
@@ -58,7 +58,7 @@
     </v-row>
     </div>
 
-      <GezichtBehandeling />
+      <GezichtBehandeling :category="selectedSlot"/>
   <v-layout>
     <!-- Page content here -->
 
@@ -132,11 +132,13 @@ const selectSlot = (slot: string) => {
   // Update the URL hash (e.g., #slot-10-30)
   const hash = `${slot.replace(':', '-')}`
   router.replace({ hash: `#${hash}` })
+
 }
 
 const selectTimeAndDate = () => {
 router.push('/behandelingen/kies-tijd')
 }
+
 return{
   isMobile,
   drawer,

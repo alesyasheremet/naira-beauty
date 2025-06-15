@@ -5,7 +5,7 @@
       <v-col cols="12" md="4">
         <v-list nav>
           <v-list-item
-            v-for="subcategory in Array.from(new Set(treatments.map(x => x.subcategory)))"
+            v-for="subcategory in Array.from(new Set(filteredCategoryTreatments.map(x => x.subcategory)))"
             :key="subcategory"
             :active="activeSubCategory === subcategory"
             @click="activeSubCategory = subcategory"
@@ -99,7 +99,7 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, computed, ComputedRef } from 'vue'
+import { ref, defineComponent, computed, ComputedRef, watch } from 'vue'
 type Treatment = {
   category: string,
   subcategory: string,
@@ -121,8 +121,11 @@ export default defineComponent({
   components: {
 
   },
-  setup() {
-    const categories = ['Alles', 'Gezicht', 'Nagels', 'Ontharen', 'Verwijderen']
+  props: {
+category: String,
+  },
+  setup(props) {
+    const categories = ['Alle', 'Gezicht', 'Nagels', 'Ontharen', 'Verwijderen']
     const treatments = ref<Treatment[]>([
   {
   category: "Nagels",
@@ -220,20 +223,49 @@ export default defineComponent({
   price: 80,
   treatments: []},
   
+    {
+  category: "Gezicht",
+  subcategory: "Gezichtsbehandelingen",
+  title: "LED Licht Therapie",
+  duration: "25 min",
+  price: 69,
+  treatments: []},
+  {
+  category: "Ontharen",
+  subcategory: "Threaden",
+  title: "Threaden - Gezicht",
+  duration: "1 u 30 min",
+  price: 80,
+  treatments: []},
 ]);
 
-const activeCategory = ref('Alles')
+const activeCategory = ref(props.category)
+console.log(activeCategory.value)
+
 const activeSubCategory = ref('Kunstnagels')
 
 const selectTreatment = (text: any) => {
 console.log(text)
 }
 
+watch(() => props.category, (newVal) => {
+  console.log(newVal)
+  activeCategory.value = newVal;
+})
+
 const filteredTreatments : ComputedRef<Treatment[]> = computed(() => {
 
-  return activeSubCategory.value === 'Alles'
+  return activeSubCategory.value === 'Alle'.toLowerCase()
     ? treatments.value as Treatment[]
     : treatments.value.filter(t => t.subcategory === activeSubCategory.value) as Treatment[]
+}
+)
+
+const filteredCategoryTreatments : ComputedRef<Treatment[]> = computed(() => {
+  
+  return activeCategory.value === 'Alle'.toLowerCase()
+    ? treatments.value as Treatment[]
+    : treatments.value.filter(t => t.category.toLowerCase() === activeCategory.value?.toLowerCase()) as Treatment[]
 }
 )
 
@@ -255,7 +287,7 @@ const isCardExpanded = (index: number) => {
 
 
 return {treatments, selectTreatment, categories, activeCategory, activeSubCategory, filteredTreatments
-  , expandCard, expanded, expandedArr, isCardExpanded}
+  , expandCard, expanded, expandedArr, isCardExpanded, filteredCategoryTreatments}
   }
 })
 </script>
