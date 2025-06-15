@@ -72,7 +72,7 @@
     >
       <div class="bar-content">
         <div>
-          <strong>Nagelversteviging</strong> • 45 min • <strong>$60</strong>
+          Nagelversteviging  45 min $60
         </div>
          <div class="right-action" @click="">
           Kies tijd
@@ -125,10 +125,14 @@ return{
 
 <style lang="scss" scoped>
 .schedule-bar {
-  position: sticky;
+  position: fixed;
   bottom: 0;
+  left: 0;
+  right: 0;
   background-color: white;
-  z-index: 10;
+  z-index: 100;
+  padding: 0;
+  border-top: 1px solid #eee;
 }
 
 .bar-content {
