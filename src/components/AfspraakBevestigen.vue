@@ -60,6 +60,9 @@ import GezichtBehandeling from '@/components/behandelingen/Gezicht.vue'
 import { useBehandelingStore } from '@/components/behandelingen/behandelingen-store'
 import { useRouter } from 'vue-router'
 
+
+import axios from 'axios'
+
 export default {
   name: 'AfspraakBevestigen',
   components: {GezichtBehandeling
@@ -80,9 +83,13 @@ const selectedTime = ref(null)
   message: '',
 })
 
-const submitForm = () => {
+const submitForm = async() => {
   console.log('Form submitted:', form.value)
   behandelingenStore.$reset()
+
+  const resp = axios.get('/.netlify/functions/api?name=John');
+  //await sendEmail()
+ // console.log(resp)
   router.push('/')
 
   // Add logic to send the message
@@ -93,6 +100,26 @@ const availableTimes = [
   '14:00', '14:30', '15:00', '15:30',
   '16:00', '16:30', '17:00',
 ]
+
+async function sendEmail() {
+  try {
+    const res = await fetch('http://localhost:3001/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: 'test',
+        email: 'alesya.sheremet@gmail.com',
+        message: 'this is a test'
+      })
+    })
+
+    const result = await res.json()
+    alert(result.message)
+  } catch (err) {
+    alert('Error sending email')
+    console.error(err)
+  }
+}
 
 const goNext = () => {
   console.log('Proceed with:', {
