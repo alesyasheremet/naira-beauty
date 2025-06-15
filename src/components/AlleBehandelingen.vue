@@ -4,8 +4,8 @@
     <div class="card-row">
     <v-row justify="start" align="start" no-gutters >
 
-      <v-col cols="12" sm="2">
-        <v-card class="pa-2" rounded="2xl" elevation="4" max-width="200" >
+      <v-col cols="12" sm="2"  >
+        <v-card class="pa-2" rounded="2xl" elevation="4" max-width="200" @click="selectSlot('alle')" :class="{ 'active-card': selectedSlot === 'alle' }">
           <v-container class="text-center fill-height d-flex flex-column justify-center align-center">
           <v-icon size="40" icon="fa fa-grip-vertical"  class="mb-3"
 />
@@ -15,7 +15,7 @@
       </v-col>
 
       <v-col cols="12" sm="2">
-        <v-card class="pa-2" rounded="2xl" elevation="4" max-width="200">
+        <v-card class="pa-2" rounded="2xl" elevation="4" max-width="200" @click="selectSlot('gezicht')" :class="{ 'active-card': selectedSlot === 'gezicht' }">
            <v-container class="text-center fill-height d-flex flex-column justify-center align-center">
         <v-img
   :src="facialIcon"
@@ -29,7 +29,7 @@
       </v-col>
 
       <v-col cols="12" sm="2">
-        <v-card class="pa-2" rounded="2xl" elevation="4"  max-width="200">
+        <v-card class="pa-2" rounded="2xl" elevation="4"  max-width="200" @click="selectSlot('nagels')" :class="{ 'active-card': selectedSlot === 'nagels' }">
           <v-container class="text-center fill-height d-flex flex-column justify-center align-center">
           <v-img
   :src="nailsIcon"
@@ -43,8 +43,8 @@
       </v-col>
 
       <v-col cols="12" sm="2">
-        <v-card class="pa-2" rounded="2xl" elevation="4" max-width="200">
-           <v-container class="text-center fill-height d-flex flex-column  align-center">
+        <v-card class="pa-2" rounded="2xl" elevation="4" max-width="200" @click="selectSlot('waxing')" :class="{ 'active-card': selectedSlot === 'waxing' }">
+           <v-container class="text-center fill-height d-flex flex-column justify-center align-center" >
           <v-img
   :src="waxingIcon"
   width="64"
@@ -83,7 +83,7 @@
 </template>
 
 <script lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useDisplay } from 'vuetify'
 import GezichtBehandeling from '@/components/behandelingen/Gezicht.vue'
 import NagelsBehandeling from '@/components/behandelingen/Nagels.vue'
@@ -91,7 +91,7 @@ import WimpersBehandeling from '@/components/behandelingen/Wimpers.vue'
 import nailsIcon from '@/assets/images/nails.png';
 import facialIcon from '@/assets/images/facial.png';
 import waxingIcon from '@/assets/images/waxing.png';
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 export default {
   name: 'AlleBehandelingen',
@@ -105,7 +105,7 @@ export default {
 const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
 const router = useRouter()
-
+const route = useRoute()
 const tabs = ['Tab 1', 'Tab 2', 'Tab 3']
 const activeTab = ref(tabs[0])
 
@@ -114,6 +114,25 @@ const tabComponents = {
   'Tab 2': NagelsBehandeling,
   'Tab 3': WimpersBehandeling,
 }
+const selectedSlot = ref('')
+// Optional: Activate slot from hash on page load
+onMounted(() => {
+  if (route.hash) {
+    const hashSlot = route.hash?.replace('#', '');
+
+      selectedSlot.value = hashSlot; 
+
+  }else{
+     selectedSlot.value = 'alle'
+     router.replace({ hash: `#alle` })
+  }})
+
+const selectSlot = (slot: string) => {
+  selectedSlot.value = slot
+  // Update the URL hash (e.g., #slot-10-30)
+  const hash = `${slot.replace(':', '-')}`
+  router.replace({ hash: `#${hash}` })
+}
 
 const selectTimeAndDate = () => {
 router.push('/behandelingen/kies-tijd')
@@ -121,13 +140,17 @@ router.push('/behandelingen/kies-tijd')
 return{
   isMobile,
   drawer,
-  tabs, activeTab, tabComponents, nailsIcon, facialIcon, waxingIcon, selectTimeAndDate,
+  tabs, activeTab, tabComponents, nailsIcon, facialIcon, waxingIcon, selectTimeAndDate, selectedSlot, selectSlot
 }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.active-card {
+  background-color: #F2B8C6;
+  color: black;
+}
 .schedule-bar {
   position: fixed;
   bottom: 0;
