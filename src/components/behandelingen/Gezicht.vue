@@ -18,7 +18,7 @@
 
       <!-- TREATMENTS RIGHT -->
       <v-col cols="12" md="8">
-         <div class="card-table">
+       
         <v-card
           v-for="treatment in filteredTreatments"
           :key="treatment.title"
@@ -27,9 +27,45 @@
           flat
           
         >
-          <v-row align="center" justify="space-between">
+<v-expand-transition>
+  <div>
+        <v-card
+      class="pa-4 mb-2 d-flex justify-space-between align-center"
+      @click=""
+      style="cursor: pointer;"
+    >
+      <div class="text-left">
+        <h3 class="text-h6 mb-1">Treatment Name</h3>
+        <p class="text-body-2">Short description</p>
+      </div>
+
+      <v-icon>
+        fa-solid fa-chevron-up
+      </v-icon>
+
+
+    </v-card>
+            <v-card
+      class="pa-4 mb-2 d-flex justify-space-between align-center"
+      @click=""
+      style="cursor: pointer;"
+    >
+      <div class="text-left">
+        <div>Treatment Name</div>
+        <div>Short description</div>
+      </div>
+
+      <v-icon>
+        fa-solid fa-chevron-up
+      </v-icon>
+
+
+    </v-card>
+    </div>
+    </v-expand-transition>
+          <v-row align="start" >
             <!-- LEFT: INFO -->
-            <v-col cols="12" md="9">
+            <v-col cols="12" md="12">
               <div class="text-subtitle-1 font-weight-medium">{{ treatment.title }}</div>
               <div class="text-body-2 text-grey-darken-1">
                 {{ treatment.duration }} •
@@ -62,7 +98,7 @@
             </v-col>
           </v-row>
         </v-card>
-        </div>
+       
       </v-col>
     </v-row>
  
