@@ -117,7 +117,7 @@ category: String,
   },
   setup(props) {
     const behandelingenStore = useBehandelingStore()
-    const categories = ['Alle', 'Gezicht', 'Nagels', 'Ontharen', 'Verwijderen']
+    const categories = ['Alle', 'Gezicht', 'Nagels', 'Ontharen', 'Wimpers', 'Verwijderen']
     const treatments = ref<Treatment[]>([
   {
   category: "Nagels",

@@ -27,7 +27,19 @@
           </v-container>
         </v-card>
       </v-col>
-
+      <v-col cols="12" sm="2">
+        <v-card class="pa-2" rounded="2xl" elevation="4" max-width="200" @click="selectSlot('wimpers')" :class="{ 'active-card': selectedSlot === 'wimpers' }">
+           <v-container class="text-center fill-height d-flex flex-column justify-center align-center">
+        <v-img
+  :src="wimpersIcon"
+  width="64"
+  height="64"
+  class="mb-3"
+/>
+          <v-card-title>Wimpers</v-card-title>
+          </v-container>
+        </v-card>
+      </v-col>
  
       <v-col cols="12" sm="2">
         <v-card class="pa-2" rounded="2xl" elevation="4"  max-width="200" @click="selectSlot('nagels')" :class="{ 'active-card': selectedSlot === 'nagels' }">
@@ -92,7 +104,7 @@ import WimpersBehandeling from '@/components/behandelingen/Wimpers.vue'
 import nailsIcon from '@/assets/images/nails.png';
 import facialIcon from '@/assets/images/facial.png';
 import waxingIcon from '@/assets/images/waxing.png';
-import wimpersIcon from '@/assets/images/wimpers.png';
+import wimpersIcon from '@/assets/images/eyelash.png';
 import { useRoute, useRouter } from 'vue-router'
 import { useBehandelingStore } from '@/components/behandelingen/behandelingen-store'
 
