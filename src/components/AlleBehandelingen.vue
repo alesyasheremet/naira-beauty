@@ -7,7 +7,7 @@
       <v-col cols="12" sm="2"  >
         <v-card class="pa-2" rounded="2xl" elevation="4" max-width="200" @click="selectSlot('alle')" :class="{ 'active-card': selectedSlot === 'alle' }">
           <v-container class="text-center fill-height d-flex flex-column justify-center align-center">
-          <v-icon size="40" icon="fa fa-grip-vertical"  class="mb-3"
+          <v-icon size="40" style="height: 64px; width: 64px" icon="fa fa-grip-vertical"  class="mb-3"
 />
           <v-card-title>Alle</v-card-title>
           </v-container>
