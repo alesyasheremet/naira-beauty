@@ -6,12 +6,13 @@
         <v-list density="comfortable">
           <v-list-item>
             <v-list-item-title><strong>Address</strong></v-list-item-title>
-            <v-list-item-subtitle>123 Main Street, Cityville, Country</v-list-item-subtitle>
+            <v-list-item-subtitle>Amsterdamsestraatweg 100</v-list-item-subtitle>
+            <v-list-item-subtitle>3513AK Utrecht</v-list-item-subtitle>
           </v-list-item>
 
           <v-list-item>
             <v-list-item-title><strong>Phone</strong></v-list-item-title>
-            <v-list-item-subtitle>+1 (555) 123-4567</v-list-item-subtitle>
+            <v-list-item-subtitle>0633316019</v-list-item-subtitle>
           </v-list-item>
 
           <v-list-item>
