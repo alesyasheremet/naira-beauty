@@ -1,6 +1,6 @@
 <template>
   <v-container class="pa-0">
-    <v-row>
+    <v-row style="background: white">
       <!-- Left: Calendar & Time Slots -->
       <v-col cols="12" md="8">
         <!-- Date Picker -->
@@ -38,21 +38,15 @@
         <v-card class="pa-4" elevation="2">
           <h3 class="text-h6 mb-2">Nairabeaty</h3>
           <v-divider class="mb-4" />
+          <div>Date: {{ selectedDate || 'Not selected' }}</div>
+          <div>Time: {{ selectedTime || 'Not selected' }}</div>
+            
+            <div v-for="behandeling in behandelingen">
+              {{behandeling.title}}
+            
+          </div>
 
-          <v-list density="default" v-for="behandeling in behandelingen">
-            <v-list-item>
-              <v-list-item-title><strong>Date:</strong></v-list-item-title>
-              <v-list-item-subtitle>{{ selectedDate || 'Not selected' }}</v-list-item-subtitle>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-title><strong>Time:</strong></v-list-item-title>
-              <v-list-item-subtitle>{{ selectedTime || 'Not selected' }}</v-list-item-subtitle>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-title><strong>Treatment:</strong></v-list-item-title>
-              <v-list-item-subtitle>{{behandeling.title}}</v-list-item-subtitle>
-            </v-list-item>
-          </v-list>
+          
 
           <v-btn
            
