@@ -320,8 +320,6 @@ return {treatments, selectTreatment, categories, activeCategory, activeSubCatego
 
 .card-row {
   margin: 0 !important;
-  border-bottom: 1px solid #eee;
-  border-radius: 0 !important;
   width: 100%;
   box-shadow: none !important;
 }
