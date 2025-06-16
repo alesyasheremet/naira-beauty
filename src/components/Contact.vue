@@ -23,22 +23,22 @@
 
       <!-- Right Column: Contact Form -->
       <v-col cols="12" md="7">
-        <v-form @submit.prevent="submitForm">
+        <v-form @submit.prevent="submitForm" ref="formContact" >
           <v-row dense>
             <v-col cols="12" md="6">
-              <v-text-field label="Naam" v-model="form.name" required />
+              <v-text-field label="Naam" v-model="form.name" required :rules="[requiredRule]"/>
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field label="Achternaam" v-model="form.surname" required />
+              <v-text-field label="Achternaam" v-model="form.surname" required :rules="[requiredRule]"/>
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field label="Email" v-model="form.email" type="email" required />
+              <v-text-field label="Email" v-model="form.email" type="email" required :rules="[requiredRule]"/>
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field label="Phone" v-model="form.phone" type="tel" />
+              <v-text-field label="Phone" v-model="form.phone" type="tel" :rules="[requiredRule]"/>
             </v-col>
             <v-col cols="12">
-              <v-textarea label="Bericht" v-model="form.message" rows="4" required />
+              <v-textarea label="Bericht" v-model="form.message" rows="4" required :rules="[requiredRule]"/>
             </v-col>
             <v-col cols="12">
               <v-btn color="primary" type="submit">Bericht sturen</v-btn>
@@ -66,11 +66,22 @@ export default {
   message: '',
 })
 
-const submitForm = () => {
+
+const formContact = ref()
+
+const requiredRule = (value: string) => {
+  return value != '' ? true : false;
+}
+
+const submitForm = async() => {
+    const validation = await formContact.value.validate();
+  if (!validation.valid) {
+       return;
+      }
   console.log('Form submitted:', form.value)
   // Add logic to send the message
 }
-return {form, submitForm}
+return {form, submitForm, formContact, requiredRule,}
   }
 }
 </script>

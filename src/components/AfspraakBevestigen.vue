@@ -2,22 +2,22 @@
   <v-container>
     <v-row style="background: white; font-size: 14px" align="start">
        <v-col cols="12" md="8">
-       <v-form @submit.prevent="submitForm">
+       <v-form @submit.prevent="submitForm" ref="formAfspraak">
           <v-row dense>
             <v-col cols="12" md="6">
-              <v-text-field label="Naam" v-model="form.name" required />
+              <v-text-field label="Naam" v-model="form.name" required :rules="[requiredRule]"/>
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field label="Achternaam" v-model="form.surname" required />
+              <v-text-field label="Achternaam" v-model="form.surname" required :rules="[requiredRule]"/>
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field label="Email" v-model="form.email" type="email" required />
+              <v-text-field label="Email" v-model="form.email" type="email" required :rules="[requiredRule]"/>
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field label="Phone" v-model="form.phone" type="tel" />
+              <v-text-field label="Phone" v-model="form.phone" type="tel" :rules="[requiredRule]"/>
             </v-col>
             <v-col cols="12">
-              <v-textarea label="Bericht" v-model="form.message" rows="4" required />
+              <v-textarea label="Bericht" v-model="form.message" rows="4" />
             </v-col>
             <v-col cols="12">
               <v-btn color="primary" type="submit">Afspraak maken</v-btn>
@@ -66,6 +66,7 @@ const selectedTime = ref(null)
     const behandelingenStore = useBehandelingStore()
     const behandelingen = ref(behandelingenStore.$state.treatment)
     const router = useRouter()
+    const formAfspraak = ref();
     const form = ref({
   name: '',
   surname: '',
@@ -74,8 +75,17 @@ const selectedTime = ref(null)
   message: '',
 })
 
+const requiredRule = (value: string) => {
+  return value != '' ? true : false;
+}
+
 const submitForm = async() => {
-  console.log('Form submitted:', form.value)
+  const validation = await formAfspraak.value.validate();
+  if (!validation.valid) {
+       return;
+      }
+
+ 
   behandelingenStore.$reset()
 
   //const resp = await axios.get('/.netlify/functions/api?name=John');
@@ -134,7 +144,7 @@ const goNext = () => {
 }
 
 return{
-selectedTime, selectedDate, goNext, availableTimes, form, submitForm, behandelingen,
+selectedTime, selectedDate, goNext, availableTimes, form, submitForm, behandelingen, requiredRule, formAfspraak,
 }
   }
 }
