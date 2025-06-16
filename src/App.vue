@@ -55,6 +55,12 @@ export default {
         contactVisible.value = true;
       }
 
+           if (textarg == 'login'){
+        aboutVisible.value = false;
+        behandelingenVisible.value = false;
+        contactVisible.value = false;
+      }
+
     }
     return { drawer, isMobile, showMainPage, aboutVisible, behandelingenVisible };
   }

@@ -16,6 +16,7 @@ import KiesTijd from './components/KiesTijd.vue';
 import AfspraakBevestigen from './components/AfspraakBevestigen.vue';
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import Login from './components/Login.vue';
 
 const routes = [
   {
@@ -42,6 +43,10 @@ const routes = [
   {
     path: '/contact',
     component: ContactDetails,
+  },
+    {
+    path: '/login',
+    component: Login,
   },
 ]
 

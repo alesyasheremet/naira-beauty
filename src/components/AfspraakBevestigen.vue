@@ -1,7 +1,11 @@
 <template>
   <v-container>
     <v-row style="background: white; font-size: 14px" align="start">
-       <v-col cols="12" md="8">
+   <v-col cols="12" md="8">
+      <v-stepper :items="['Afspraak maken', 'Email verificatie', 'Afspraak bevestigen']"  v-model="step">
+          
+  <template v-slot:item.1>
+      
        <v-form @submit.prevent="submitForm" ref="formAfspraak">
           <v-row dense>
             <v-col cols="12" md="6">
@@ -24,9 +28,43 @@
             </v-col>
           </v-row>
         </v-form>
-      </v-col>
+ 
+  </template>
 
-      <!-- Right: Summary Card -->
+  <template v-slot:item.2>
+ 
+        <v-form @submit.prevent="" ref="">
+          <v-row dense>
+            <v-col cols="12" md="12">
+              <v-text-field label="Verificatie code" v-model="form.name" required :rules="[requiredRule]"/>
+            </v-col>
+          </v-row>
+        </v-form>
+ 
+  </template>
+
+    <template v-slot:item.3>
+ 
+       <v-form @submit.prevent="" ref="">
+          <v-row dense>
+            <v-col cols="12" md="12">
+              <v-text-field label="Naam" v-model="form.name" required :rules="[requiredRule]"/>
+            </v-col>
+          </v-row>
+        </v-form>
+     
+  </template>
+
+  <template v-slot:next>
+    <v-btn @click="goNext">NEXT</v-btn>
+  </template>
+    <template v-slot:prev>
+    <v-btn @click="goPrev">PREVIOUS</v-btn>
+  </template>
+</v-stepper> 
+
+     
+</v-col>
       <v-col cols="12" md="4">
         <v-card class="pa-4" elevation="2">
           <h3 class="text-h6 mb-2">Your Booking</h3>
@@ -45,7 +83,7 @@
 </template>
 
 <script lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, nextTick } from 'vue'
 import { useDisplay } from 'vuetify'
 import GezichtBehandeling from '@/components/behandelingen/Gezicht.vue'
 import { useBehandelingStore } from '@/components/behandelingen/behandelingen-store'
@@ -53,6 +91,7 @@ import { useRouter } from 'vue-router'
 
 
 import axios from 'axios'
+import { VTextField } from 'vuetify/lib/components'
 
 export default {
   name: 'AfspraakBevestigen',
@@ -74,6 +113,8 @@ const selectedTime = ref(null)
   phone: '',
   message: '',
 })
+
+const step = ref(1)
 
 const requiredRule = (value: string) => {
   return value != '' ? true : false;
@@ -114,6 +155,22 @@ const availableTimes = [
   '16:00', '16:30', '17:00',
 ]
 
+const updateStep = async(value: any) => {
+  
+    try {
+    const res = await axios.post('/.netlify/functions/api', { method: 'emailverification' })
+    
+
+    
+    alert(res.status)
+  } catch (err) {
+    alert('Error sending email')
+    console.error(err)
+  }
+
+  console.log('test' + value)
+}
+
 async function sendEmail() {
   try {
     const res = await fetch('http://localhost:3001/send-email', {
@@ -134,7 +191,20 @@ async function sendEmail() {
   }
 }
 
-const goNext = () => {
+const goNext = (v:any) => {
+  if (step.value < 3) step.value++
+  console.log(v)
+  console.log('Proceed with:', {
+    date: selectedDate.value,
+    time: selectedTime.value,
+    treatment: 'Relaxing Massage',
+  })
+  // Add navigation logic here (e.g., router.push('/confirm'))
+}
+
+const goPrev = (v:any) => {
+  if (step.value >1) step.value--
+  console.log(v)
   console.log('Proceed with:', {
     date: selectedDate.value,
     time: selectedTime.value,
@@ -144,7 +214,7 @@ const goNext = () => {
 }
 
 return{
-selectedTime, selectedDate, goNext, availableTimes, form, submitForm, behandelingen, requiredRule, formAfspraak,
+selectedTime, selectedDate, goNext, availableTimes, form, submitForm, behandelingen, requiredRule, formAfspraak,step, updateStep, goPrev,
 }
   }
 }
