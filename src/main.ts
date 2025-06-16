@@ -84,6 +84,7 @@ const vuetify = createVuetify({
           fa,
         },
       },
+      
     });
 
 const app = createApp(App)

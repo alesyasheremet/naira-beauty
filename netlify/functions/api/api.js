@@ -5,23 +5,27 @@ const connectionString = "postgresql://naira:PdEMGZ6iwv7hs5O5BZk6Zw@mellow-oyste
 
 exports.handler = async function (event, context) {
 
+  // Parse JSON body
+  if (event.httpMethod == 'POST') {
+    const data = JSON.parse(event.body);
+
+    if (data.method == 'afspraakmaken'){
     try {
     const transporter = nodemailer.createTransport({
       host: 'smtp-relay.brevo.com',
       port: 587,
       secure: false,
       auth: {
-        user: '8fbb97001@smtp-brevo.com',
-        pass: 'Bbw1rUYmvF8CqynG' // Not your real Gmail password!
+        user: '8fc2d6001@smtp-brevo.com',
+        pass: 'r0dzO7gS1c538Jk4' // Not your real Gmail password!
       }
     })
 
     await transporter.sendMail({
-      from: 'alesya.sheremet@gmail.com',
-      to: 'alesya.sheremet@gmail.com',
-      subject: `New message from alesya`,
-      text: 'this is a test',
-      replyTo: 'alesya.sheremet@gmail.com'
+      from: {address:'customer-service@radishline.cc', name: 'Nairabeauty'},
+      to: 'nairabeauty.website@gmail.com',
+      subject: `Afspraak bevestigen`,
+      text: 'Afspraak bevestigen',
     })
 
     return {
@@ -38,7 +42,8 @@ exports.handler = async function (event, context) {
         message: 'Failed to send email',
       }),
     };
-  }
+  }}
+}
 
     // Parse query parameters (if needed)
     /*
@@ -62,4 +67,11 @@ exports.handler = async function (event, context) {
         rows: results
       }),
     };*/
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        message: 'Hello World',
+      }),
+    };
+  
   };

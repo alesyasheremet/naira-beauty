@@ -1,6 +1,6 @@
 <template>
   <v-container class="py-8">
-    <v-row>
+    <v-row style="background: white">
       <!-- Left Column: Contact Info -->
       <v-col cols="12" md="5">
         <h2 class="text-h5 mb-4">Contact Information</h2>
@@ -24,6 +24,7 @@
 
       <!-- Right Column: Contact Form -->
       <v-col cols="12" md="7">
+      
         <h2 class="text-h5 mb-4">Send Us a Message</h2>
         <v-form @submit.prevent="submitForm">
           <v-row dense>
@@ -47,6 +48,7 @@
             </v-col>
           </v-row>
         </v-form>
+      
       </v-col>
     </v-row>
   </v-container>

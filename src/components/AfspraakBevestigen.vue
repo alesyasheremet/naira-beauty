@@ -1,6 +1,6 @@
 <template>
   <v-container fluid class="pa-6">
-    <v-row>
+    <v-row style="background: white; font-size: 14px">
        <v-col cols="12" md="8">
        <v-form @submit.prevent="submitForm">
           <v-row dense>
@@ -20,7 +20,7 @@
               <v-textarea label="Message" v-model="form.message" rows="4" required />
             </v-col>
             <v-col cols="12">
-              <v-btn color="primary" type="submit">Submit</v-btn>
+              <v-btn color="primary" type="submit">Afspraak maken</v-btn>
             </v-col>
           </v-row>
         </v-form>
@@ -87,9 +87,21 @@ const submitForm = async() => {
   console.log('Form submitted:', form.value)
   behandelingenStore.$reset()
 
-  const resp = await axios.get('/.netlify/functions/api?name=John');
+  //const resp = await axios.get('/.netlify/functions/api?name=John');
+  try {
+    const res = await axios.post('/.netlify/functions/api', {name: form.value.name, surname: form.value.surname
+      , email: form.value.email, phone: form.value.phone, message: form.value.message, method: 'afspraakmaken' })
+    
+
+    
+    alert(res.status)
+  } catch (err) {
+    alert('Error sending email')
+    console.error(err)
+  }
+
   //await sendEmail()
-  console.log(resp)
+  //console.log(resp)
   router.push('/')
 
   // Add logic to send the message
