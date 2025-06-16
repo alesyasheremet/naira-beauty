@@ -5,10 +5,10 @@
        <v-form @submit.prevent="submitForm">
           <v-row dense>
             <v-col cols="12" md="6">
-              <v-text-field label="Name" v-model="form.name" required />
+              <v-text-field label="Naam" v-model="form.name" required />
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field label="Surname" v-model="form.surname" required />
+              <v-text-field label="Achternaam" v-model="form.surname" required />
             </v-col>
             <v-col cols="12" md="6">
               <v-text-field label="Email" v-model="form.email" type="email" required />
@@ -17,7 +17,7 @@
               <v-text-field label="Phone" v-model="form.phone" type="tel" />
             </v-col>
             <v-col cols="12">
-              <v-textarea label="Message" v-model="form.message" rows="4" required />
+              <v-textarea label="Bericht" v-model="form.message" rows="4" required />
             </v-col>
             <v-col cols="12">
               <v-btn color="primary" type="submit">Afspraak maken</v-btn>
@@ -221,7 +221,7 @@ selectedTime, selectedDate, goNext, availableTimes, form, submitForm, behandelin
 /* Card title */
 .v-card-title {
   color: #333;
-  font-size: 14px;
+  //font-size: 14px;
 }
 
 /* Card text */

@@ -81,6 +81,7 @@ export default {
       height: 100%;
       font-weight: 600;
        font-family: 'Domine', sans-serif !important;
+         font-size: 14px !important;
     }
 
     body {

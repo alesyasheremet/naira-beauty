@@ -10,6 +10,7 @@
             :active="activeSubCategory === subcategory"
             @click="activeSubCategory = subcategory"
             class="text-left"
+            style="font-size: 14px !important"
             >
             <v-list-item-title>{{ subcategory }}({{getSubCategoryCount(subcategory) }})</v-list-item-title>
           </v-list-item>
