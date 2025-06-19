@@ -17,6 +17,7 @@ import AfspraakBevestigen from './components/AfspraakBevestigen.vue';
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import Login from './components/Login.vue';
+import AfspraakMaken from '@/components/AfspraakMaken.vue';
 
 const routes = [
   {
@@ -35,6 +36,10 @@ const routes = [
     {
     path: '/behandelingen/kies-tijd/afspraak-bevestigen',
     component: AfspraakBevestigen,
+  },
+      {
+    path: '/behandelingen/kies-tijd/afspraak-maken',
+    component: AfspraakMaken,
   },
   {
     path: '/team',

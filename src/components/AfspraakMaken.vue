@@ -43,17 +43,6 @@
  
   </template>
 
-    <template v-slot:item.3>
- 
-       <v-form @submit.prevent="" ref="">
-          <v-row dense>
-            <v-col cols="12" md="12">
-              <v-text-field label="Naam" v-model="form.name" required :rules="[requiredRule]"/>
-            </v-col>
-          </v-row>
-        </v-form>
-     
-  </template>
 
   <template v-slot:next>
     <v-btn @click="goNext">NEXT</v-btn>
@@ -94,7 +83,7 @@ import axios from 'axios'
 import { VTextField } from 'vuetify/lib/components'
 
 export default {
-  name: 'AfspraakBevestigen',
+  name: 'AfspraakMaken',
   components: {GezichtBehandeling
 
   },
