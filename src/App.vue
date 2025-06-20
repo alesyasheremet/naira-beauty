@@ -91,7 +91,7 @@ export default {
     }
 
     body {
-      background-image: url('assets/Image003.jpg'); /* Replace with your image path */
+      //background-image: url('assets/Image003.jpg'); /* Replace with your image path */
       background-size: cover;      /* Ensures the image covers the entire page */
       background-repeat: no-repeat; /* Prevents tiling */
       background-position: center;  /* Centers the image */
