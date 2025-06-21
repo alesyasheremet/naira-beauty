@@ -7,6 +7,10 @@
   import {useRouter} from 'vue-router'
   import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+// Manually fix marker icon issue
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png'
+import markerIcon from 'leaflet/dist/images/marker-icon.png'
+import markerShadow from 'leaflet/dist/images/marker-shadow.png'
 
   export  default defineComponent({
     name: 'MapView',
@@ -15,6 +19,15 @@ import 'leaflet/dist/leaflet.css'
     },
     emits: ['on-toolbar-item-changed',],
     setup(props, {emit}) {
+// Fix default icon paths
+delete L.Icon.Default.prototype._getIconUrl
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+})
+
       onMounted(() => {
   const map = L.map('map').setView([52.100871, 5.104739], 15);
 
