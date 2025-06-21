@@ -11,7 +11,7 @@
       <v-btn text  v-if="!isMobile" @click="toolBarItemChanged('team')">Team</v-btn>
       <v-btn text  v-if="!isMobile" @click="toolBarItemChanged('behandelingen')">Behandelingen</v-btn>
       <v-btn text  v-if="!isMobile" @click="toolBarItemChanged('contact')">Contact</v-btn>
-      <v-btn text  v-if="!isMobile" @click="toolBarItemChanged('login')">Login</v-btn>
+      <!--<v-btn text  v-if="!isMobile" @click="toolBarItemChanged('login')">Login</v-btn>-->
     </v-app-bar>
     <!-- Navigation Drawer for Mobile -->
     <v-navigation-drawer v-model="drawer" temporary>

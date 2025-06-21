@@ -50,12 +50,16 @@
       </v-col>
     </v-row>
   </v-container>
+  <WebsiteFooter/>
 </template>
 
 <script lang="ts">
 import { ref } from 'vue'
+import WebsiteFooter from '@/components/Footer.vue' 
+
 export default {
   name: 'ContactDetails',
+  components: {WebsiteFooter},
   props: {
     msg: String
   }, setup(){

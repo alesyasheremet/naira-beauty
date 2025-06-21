@@ -7,11 +7,15 @@
           </v-col>
         </v-row>
 
+<WebsiteFooter />
 </template>
 
 <script>
+import WebsiteFooter from '@/components/Footer.vue';
+
 export default {
   name: 'AboutMe',
+  components: {WebsiteFooter},
   props: {
     msg: String
   }
