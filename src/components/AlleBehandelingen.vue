@@ -170,7 +170,7 @@ return{
 
 <style lang="scss" scoped>
 .active-card {
-  background-color: #F2B8C6;
+  background-color: #F4CDD4;
   color: black;
 }
 .schedule-bar {
@@ -195,7 +195,7 @@ return{
 
 .right-action {
   flex: 0 0 40%;
-  background-color: #F2B8C6; /* Vuetify primary */
+  background-color: #F4CDD4; /* Vuetify primary */
   display: flex;
   justify-content: center;
   align-items: center;

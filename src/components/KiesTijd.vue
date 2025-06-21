@@ -128,7 +128,7 @@ selectedTime, selectedDate, goNext, availableTimes, behandelingen,
 
 .right-action {
   flex: 0 0 40%;
-  background-color: #F2B8C6; /* Vuetify primary */
+  background-color: #F4CDD4; /* Vuetify primary */
   color: white;
   display: flex;
   justify-content: center;
