@@ -72,7 +72,7 @@
     </div>
 
       <GezichtBehandeling :category="selectedSlot"/>
-  <v-layout>
+  <v-layout v-if="behandelingen > 0">
     <!-- Page content here -->
 
     <!-- Full-width sticky bottom bar -->
@@ -83,9 +83,9 @@
       rounded="0"
       width="100%"
     >
-      <div class="bar-content">
+      <div class="bar-content" >
         <div>
-          {{ behandelingen > 0 ? behandelingen + ' services' : '' }}
+          {{ behandelingen > 1 ? behandelingen + ' behandelingen' : behandelingen + ' behandeling' }}
         </div>
          <div class="right-action" @click="selectTimeAndDate">
           Kies tijd
