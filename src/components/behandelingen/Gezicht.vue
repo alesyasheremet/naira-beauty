@@ -2,17 +2,17 @@
  
     <!-- TABS ON THE LEFT -->
     <v-row align="start" class="pa-4">
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="4" >
         <v-list nav>
           <v-list-item
             v-for="subcategory in Array.from(new Set(filteredCategoryTreatments.map(x => x.subcategory)))"
             :key="subcategory"
             :active="activeSubCategory === subcategory"
             @click="activeSubCategory = subcategory"
-            class="text-left"
-            style="font-size: 14px !important"
+            style="text-align: left;"
+            
             >
-            <v-list-item-title>{{ subcategory }}({{getSubCategoryCount(subcategory) }})</v-list-item-title>
+            <v-list-item-title style="font-size: 14px !important;">{{ subcategory }}({{getSubCategoryCount(subcategory) }})</v-list-item-title>
           </v-list-item>
         </v-list>
         
