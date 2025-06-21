@@ -18,6 +18,7 @@ import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import Login from './components/Login.vue';
 import AfspraakMaken from '@/components/AfspraakMaken.vue';
+import { nl } from 'vuetify/locale'
 
 const routes = [
   {
@@ -94,6 +95,10 @@ const vuetify = createVuetify({
           fa,
         },
       },
+      locale: {
+    locale: 'nl',
+    messages: { nl },
+  },
       
     });
 
