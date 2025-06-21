@@ -71,28 +71,27 @@
     </v-row>
     </div>
 
-      <GezichtBehandeling :category="selectedSlot"/>
-  <v-layout v-if="behandelingen > 0">
-    <!-- Page content here -->
-
-    <!-- Full-width sticky bottom bar -->
-    <v-sheet
-      class="schedule-bar"
-      height="64"
+      <GezichtBehandeling :category="selectedSlot" />
+          <v-bottom-navigation v-if="behandelingen > 0"
+      app
+      color="indigo"
+      
+      fixed
+            height="64"
       elevation="3"
       rounded="0"
-      width="100%"
     >
       <div class="bar-content" >
-        <div>
+        <div style="font-size: 14px !important">
           {{ behandelingen > 1 ? behandelingen + ' behandelingen' : behandelingen + ' behandeling' }}
         </div>
          <div class="right-action" @click="selectTimeAndDate">
           Kies tijd
          </div>
       </div>
-    </v-sheet>
-  </v-layout>
+    </v-bottom-navigation>
+
+
 </template>
 
 <script lang="ts">
@@ -101,6 +100,7 @@ import { useDisplay } from 'vuetify'
 import GezichtBehandeling from '@/components/behandelingen/Gezicht.vue'
 import NagelsBehandeling from '@/components/behandelingen/Nagels.vue'
 import WimpersBehandeling from '@/components/behandelingen/Wimpers.vue'
+import WebsiteFooter from '@/components/Footer.vue'
 import nailsIcon from '@/assets/images/nails.png';
 import facialIcon from '@/assets/images/facial.png';
 import waxingIcon from '@/assets/images/hair-removal.png';
@@ -110,7 +110,7 @@ import { useBehandelingStore } from '@/components/behandelingen/behandelingen-st
 
 export default {
   name: 'AlleBehandelingen',
-  components: {GezichtBehandeling
+  components: {GezichtBehandeling, WebsiteFooter,
 
   },
   

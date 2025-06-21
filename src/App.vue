@@ -1,7 +1,9 @@
 
 <template>
+
 <v-app app class="app-class">
-    <!-- App Bar (Top Menu) -->
+ <div class="d-flex flex-column fill-height">
+  <!-- App Bar (Top Menu) -->
     <ToolBar @on-toolbar-item-changed="showMainPage"/>
 
     
@@ -11,7 +13,8 @@
 
        <router-view />
     </v-main>
-  
+        <WebsiteFooter />
+        </div>
   </v-app>
 
 </template>
@@ -21,10 +24,11 @@ import { ref, computed } from 'vue';
 import ToolBar from '@/components/ToolBar.vue'
 import AboutMe from '@/components/About.vue'
 import AlleBehandelingen from '@/components/AlleBehandelingen.vue'
+import WebsiteFooter from '@/components/Footer.vue'
 
 export default {
   name: 'App',
-  components: { ToolBar, AboutMe, AlleBehandelingen,
+  components: { ToolBar, AboutMe, AlleBehandelingen, WebsiteFooter,
 
   },
   setup() {
@@ -131,6 +135,7 @@ v-btn {
 }
 
 .main-class{
-  padding: 0 !important
+  padding: 0 !important;
+  height: 100vh;
 }
   </style>

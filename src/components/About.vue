@@ -7,7 +7,7 @@
           </v-col>
         </v-row>
 
-<WebsiteFooter />
+
 </template>
 
 <script>

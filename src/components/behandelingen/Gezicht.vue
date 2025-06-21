@@ -1,8 +1,8 @@
 <template>
  
     <!-- TABS ON THE LEFT -->
-    <v-row align="start" class="pa-4">
-      <v-col cols="12" md="4" >
+    <v-row align="start" class="pa-4" >
+      <v-col cols="12" md="4" style="height: 100%">
         <v-list nav>
           <v-list-item
             v-for="subcategory in Array.from(new Set(filteredCategoryTreatments.map(x => x.subcategory)))"
@@ -19,7 +19,7 @@
       </v-col>
 
       <!-- TREATMENTS RIGHT -->
-      <v-col cols="12" md="8">
+      <v-col cols="12" md="8" style="height: 100%">
        
         <v-card
           v-for="(treatment, index) in filteredTreatments"

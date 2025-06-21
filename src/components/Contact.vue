@@ -51,7 +51,7 @@
     </v-row>
   </v-container>
   <MapView />
-  <WebsiteFooter/>
+
 </template>
 
 <script lang="ts">

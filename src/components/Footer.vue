@@ -1,5 +1,5 @@
 <template>
-<v-footer app color="primary" class="text-white">
+<v-footer app color="primary" class="text-white" style="position: relative;">
     <v-container>
       <v-row align="center" justify="space-between">
         <v-col cols="12" md="4" class="text-center text-md-start">
