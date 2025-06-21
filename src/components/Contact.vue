@@ -50,16 +50,18 @@
       </v-col>
     </v-row>
   </v-container>
+  <MapView />
   <WebsiteFooter/>
 </template>
 
 <script lang="ts">
 import { ref } from 'vue'
 import WebsiteFooter from '@/components/Footer.vue' 
+import MapView from '@/components/MapView.vue' 
 
 export default {
   name: 'ContactDetails',
-  components: {WebsiteFooter},
+  components: {WebsiteFooter, MapView},
   props: {
     msg: String
   }, setup(){
