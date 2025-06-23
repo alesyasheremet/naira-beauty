@@ -6,12 +6,14 @@
   :src="iconRaw"
   width="96"
   height="96"
+  style="transform: rotate(345deg);"
   class="mb-3 my-colored-icon"
 />
         <v-img
   :src="iconRaw17"
   width="96"
   height="96"
+    style="transform: rotate(35deg);"
   class="mb-3 my-colored-icon"
 />
           </v-col>
