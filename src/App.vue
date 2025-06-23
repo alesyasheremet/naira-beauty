@@ -90,6 +90,7 @@ export default {
       padding: 0;
       height: 100%;
       font-weight: 600;
+        color: #2c3e50;
        font-family: 'Domine', sans-serif !important;
          font-size: 14px !important;
     }

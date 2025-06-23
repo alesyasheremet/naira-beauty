@@ -85,6 +85,7 @@ const vuetify = createVuetify({
         global: {
           style: {
             fontFamily: 'Domine, sans-serif', // Set Lato as the default font
+             color: '#2c3e50',
           }
         }
       },

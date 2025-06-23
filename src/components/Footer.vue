@@ -2,7 +2,7 @@
 <v-footer app color="primary" class="text-white" style="position: relative;">
     <v-container>
       <v-row align="center" justify="space-between">
-        <v-col cols="12" md="4" class="text-center text-md-start">
+        <v-col cols="12" md="4" class="text-center text-md-start" style=" color: #2c3e50;">
            <h4 class="text-h6 mb-2">Adres</h4>
           <p class="mb-0">Nairabeauty</p>
           <p class="mb-0">Amsterdamsestraatweg 100</p>
